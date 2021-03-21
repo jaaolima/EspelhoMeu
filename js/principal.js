@@ -141,17 +141,17 @@ $(document).ready(function() {
 				, data: $("#form_usuario").serialize()
 		        , type: 'post'
 		        , success: function(html) {
-		        	swal.fire({
+		        	/*swal.fire({
 		                position: 'top-right',
 		                type: 'success',
 		                title: html,
 		                showConfirmButton: true
-		            });
+		            });*/
 		            
 					redirectTo("principal.php");
 		        }
 				, error: function (data) {
-					swal.fire("Erro", data.responseText, "error");
+					//swal.fire("Erro", data.responseText, "error");
 				}
 		    });		
 		}	
@@ -175,7 +175,7 @@ function validar()
 	if($("#ds_empresa").val() == "")
 	{
 		$("#ds_empresa").focus();
-		swal.fire("Erro", "Preencha a descrição", "error");
+		//swal.fire("Erro", "Preencha a descrição", "error");
 		$("#ds_empresa").addClass("is-invalid");
 		return false;	
 	}
@@ -187,7 +187,7 @@ function validar()
 	if($("#nu_telefone").val() == "")
 	{
 		$("#nu_telefone").focus();
-		swal.fire("Erro", "Preencha a descrição", "error");
+		//swal.fire("Erro", "Preencha a descrição", "error");
 		$("#nu_telefone").addClass("is-invalid");
 		return false;	
 	}
