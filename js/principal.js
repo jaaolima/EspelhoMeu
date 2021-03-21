@@ -10,12 +10,12 @@ $(document).ready(function() {
 				, data: $("#form_usuario").serialize()
 		        , type: 'post'
 		        , success: function(html) {
-		        	/*swal.fire({
+		        	swal.fire({
 		                position: 'top-right',
 		                type: 'success',
 		                title: html,
 		                showConfirmButton: true
-		            });*/
+		            });
 		            
 					redirectTo("#");
 		        }
