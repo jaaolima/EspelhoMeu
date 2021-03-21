@@ -163,7 +163,7 @@ function validar()
 	if($("#ds_nome").val() == "")
 	{
 		$("#ds_nome").focus();
-		swal.fire("Erro", "Preencha a descrição", "error");
+		/*swal.fire("Erro", "Preencha a descrição", "error");*/
 		$("#ds_nome").addClass("is-invalid");
 		return false;	
 	}
