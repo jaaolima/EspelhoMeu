@@ -148,7 +148,7 @@ $(document).ready(function() {
 		                showConfirmButton: true
 		            });*/
 		            
-					redirectTo("principal.php");
+					redirectTo("../principal.php");
 		        }
 				, error: function (data) {
 					//swal.fire("Erro", data.responseText, "error");
