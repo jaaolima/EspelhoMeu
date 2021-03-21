@@ -26,7 +26,7 @@
                             <a type="button" data-toggle="modal" data-target="#modalCliente" class="nav-link">Adicionar cliente</a>
                         </li>
                     </ul>
-                </div>  
+                </div>   
                 <div class="modal fade" id="modalCliente">
                     <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
