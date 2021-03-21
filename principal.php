@@ -1,9 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php
-require_once("Classe/conexao.php");
-echo "hello"
-?>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -52,7 +48,7 @@ echo "hello"
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label>Empresa <span class="text-danger">*</span></label>
-                                                <input type="text" class="form-control" id="ds_descricao" name="ds_descricao" />
+                                                <input type="text" class="form-control" id="ds_empresa" name="ds_empresa" />
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label>Contato <span class="text-danger">*</span></label>
@@ -63,7 +59,7 @@ echo "hello"
                                 </form>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-primary">Salvar</button>
+                                <button type="button" id="gravarCliente"class="btn btn-primary">Salvar</button>
                             </div>
                         </div>
                     </div>
