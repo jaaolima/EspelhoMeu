@@ -16,6 +16,8 @@ $(document).ready(function() {
 		                title: html,
 		                showConfirmButton: true
 		            });*/
+		            
+					redirectTo("#");
 		        }
 				, error: function (data) {
 					//swal.fire("Erro", data.responseText, "error");
