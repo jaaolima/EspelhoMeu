@@ -1,4 +1,4 @@
-var DatatablesBasicBasic = function() {
+/*var DatatablesBasicBasic = function() {
 
 	var initTable1 = function() {
 		var table = $('#table');
@@ -70,11 +70,11 @@ var DatatablesBasicBasic = function() {
 			
 		});*/
 
-		table.on('click', '#btn-editar', function() {
+		/*table.on('click', '#btn-editar', function() {
 
 			redirectTo("appPonto/alterar_cadastro");
 			
-		});
+		});*/
 
 		/*table.on('click', '#btn-excluir', function() {
 			var id_aula = $(this).data("aula");
@@ -113,7 +113,7 @@ var DatatablesBasicBasic = function() {
 			
 		}); */
 		
-	};
+	/*};
 
 	return {
 
@@ -128,7 +128,7 @@ var DatatablesBasicBasic = function() {
 
 jQuery(document).ready(function() {
 	DatatablesBasicBasic.init();
-});
+});*/
 
 $(document).ready(function() {
 	    
