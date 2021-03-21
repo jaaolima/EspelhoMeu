@@ -59,7 +59,7 @@
                                 </form>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" id="gravarCliente"class="btn btn-primary">Salvar</button>
+                                <button type="button" id="salvarCliente"class="btn btn-primary">Salvar</button>
                             </div>
                         </div>
                     </div>
