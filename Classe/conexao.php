@@ -1,14 +1,53 @@
 <?php
+class Conecta {
+	static private $db;
+	var $host;
+	var $usuario;
+	var $senha;
+	var $banco;
+	
+	function __construct() {
+		$this->host = "";
+		$this->usuario = "";
+		$this->senha = "";
+		$this->banco = "";
+	}
 
-$host = "localhost";
-$usuario = "root";
-$senha = "";
-$bd = "universo";
+	
+	public static function criarConexao(){
+		try
+		{
+			self::$db = new PDO('mysql:host=localhost;dbname=universo;charset=utf8', 'root', '');
+			
+	        self::$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            self::$db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+  
+			return self::$db;
+		}
+		catch ( PDOException $e )
+		{
+		    die( 'Erro ao conectar com o Banco: ' . $e->getMessage());
+		}
+	}
 
-$mysqli = new mysqli($host, $usuario, $senha, $bd);
 
-if($mysqli->connect_errno)
-    echo "Falha na conexão:(".$mysqli->connect_errno.")".$mysqli->connect_erro;
+	
+	static public function getConexao()
+	{
+		global $con;
+		if(self::$db)
+		{
+			$con=self::$db;
+			return $con;
+		}
+		else
+		{
+			$con=self::criarConexao();
+			return $con;	
+		}
+	}
+
+}
+
 
 ?>
-
