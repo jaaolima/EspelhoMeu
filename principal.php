@@ -98,7 +98,7 @@
                                 </form>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-primary">Salvar</button>
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">Salvar</button>
                             </div>
                         </div>
                     </div>
