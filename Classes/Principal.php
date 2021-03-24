@@ -1,5 +1,5 @@
 <?php
-    require_once("Classes/conexao.php");
+    require_once("conexao.php");
     class Cliente{
         public function gravarCliente(array $dados)
 		{
