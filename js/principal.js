@@ -16,7 +16,7 @@ $(document).ready(function() {
 		                title: html,
 		                showConfirmButton: true
 		            });		
-					document.location.reload(true);            
+					$('#modalCliente').modal('hide');            
 		        }
 				, error: function (data) {
 					swal.fire("Erro", data.responseText, "error");
