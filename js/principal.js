@@ -25,7 +25,7 @@ $(document).ready(function() {
 		}	
 	});
 	$("#salvarPonto").on("click", function(e){ 
-		if(validarCliente())
+		if(validarPonto())
 		{ 
 			$.ajax({
 		        url: 'appPonto/gravar_ponto.php'
