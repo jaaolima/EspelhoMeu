@@ -1,12 +1,12 @@
 <?php
     require_once("conexao.php");
     class Principal{
-        public function gravarCliente(array $dados)
+        public function gravarCliente()
 		{
 
-			$ds_nome	    = $dados['ds_nome'];
-			$ds_empresa	    = $dados['ds_empresa'];
-			$nu_telefone	= $dados['nu_telefone'];
+			$ds_nome	    = $_POST['ds_nome'];
+			$ds_empresa	    = $_POST['ds_empresa'];
+			$nu_telefone	= $_POST['nu_telefone'];
 
 			
 			try{
@@ -18,7 +18,7 @@
 				
 				$params = array(':ds_nome' => $ds_nome,
 								':ds_empresa' => $ds_empresa,
-								':nu_telefone' => $nu_telefone,);
+								':nu_telefone' => $nu_telefone);
                                 
 				$stmt->execute($params);
 				
