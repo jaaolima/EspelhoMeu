@@ -10,7 +10,7 @@ $(document).ready(function() {
 				, data: $("#form_usuario").serialize()
 		        , type: 'post'
 		        , success: function(html) {
-					//document.location.reload(true);
+					document.location.reload(true);
 		        	swal.fire({
 		                position: 'top-right',
 		                type: 'success',
