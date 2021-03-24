@@ -4,8 +4,8 @@
 	error_reporting(E_ALL);
 	require_once("Classes/Principal.php");
 
-    $geral = new Geral();
-    $listarCliente = $geral->listarOptionsCliente(NULL);
+    $Principal = new Principal();
+    $listarCliente = $Principal->listarOptionsCliente(NULL);
 ?>
 <!DOCTYPE html>
 <html lang="en">
