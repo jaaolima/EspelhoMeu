@@ -11,8 +11,8 @@
 			
 			try{
 				$con = Conecta::criarConexao();
-				$insert = "INSERT into tb_cliente (ds_descricao, ds_empresa, nu_telefone)
-							VALUES (:ds_descricao, :ds_empresa, :nu_telefone)";
+				$insert = "INSERT into tb_cliente (ds_nome, ds_empresa, nu_telefone)
+							VALUES (:ds_nome, :ds_empresa, :nu_telefone)";
 				
 				$stmt = $con->prepare($insert);
 				
