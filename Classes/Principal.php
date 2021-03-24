@@ -41,7 +41,7 @@
 			
 			try{
 				$con = Conecta::criarConexao();
-				$insert = "INSERT into tb_cliente (ds_localidade, nu_localidade, id_cliente)
+				$insert = "INSERT into tb_ponto (ds_localidade, nu_localidade, id_cliente)
 							VALUES (:ds_localidade, :nu_localidade, :id_cliente)";
 				
 				$stmt = $con->prepare($insert);
