@@ -40,7 +40,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form id="form_usuario">
+                                <form id="form_cliente">
                                     <div class="card-body">
                                         <div class="form-group row">
                                             <div class="form-group col-md-6">
@@ -77,12 +77,12 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form id="form_usuario">
+                                <form id="form_ponto">
                                     <div class="card-body">
                                         <div class="form-group row">
                                             <div class="form-group col-md-6">
-                                                <label>Nome <span class="text-danger">*</span></label>
-                                                <input type="text" class="form-control" id="ds_nome" name="ds_nome" />
+                                                <label>Local <span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" id="ds_localidade" name="ds_localidade" />
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label>Latitude/Longitude <span class="text-danger">*</span></label>
@@ -92,6 +92,7 @@
                                                 <label>Cliente <span class="text-danger">*</span></label>
                                                 <select name="id_cliente" class="form-control" >
                                                     <option value="">Selecione..</option>
+                                                    <option value="1">Teste</option>
                                                 </select>
                                             </div>
                                         </div>       

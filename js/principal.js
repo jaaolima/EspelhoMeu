@@ -1,13 +1,13 @@
-$('#nu_telefone').maskbrphone()
+
 $(document).ready(function() {
 	    
 
 	$("#salvarCliente").on("click", function(e){ 
-		if(validar())
+		if(validarCliente())
 		{ 
 			$.ajax({
 		        url: 'appCliente/gravar_cliente.php'
-				, data: $("#form_usuario").serialize()
+				, data: $("#form_cliente").serialize()
 		        , type: 'post'
 		        , success: function(html) {
 		        	swal.fire({
@@ -24,9 +24,31 @@ $(document).ready(function() {
 		    });		
 		}	
 	});
+	$("#salvarPonto").on("click", function(e){ 
+		if(validarCliente())
+		{ 
+			$.ajax({
+		        url: 'appPonto/gravar_ponto.php'
+				, data: $("#form_ponto").serialize()
+		        , type: 'post'
+		        , success: function(html) {
+		        	swal.fire({
+		                position: 'top-right',
+		                type: 'success',
+		                title: html,
+		                showConfirmButton: true
+		            });		
+					$('#modalPonto').modal('hide');            
+		        }
+				, error: function (data) {
+					swal.fire("Erro", data.responseText, "error");
+				}
+		    });		
+		}	
+	});
 });
 
-function validar()
+function validarCliente()
 {
 	if($("#ds_nome").val() == "")
 	{
@@ -63,6 +85,51 @@ function validar()
 	{
 		$("#nu_telefone").removeClass("is-invalid");	
 		$("#nu_telefone").addClass("is-valid");
+	}
+
+	
+	
+	
+
+	return true;
+}
+function validarPonto()
+{
+	if($("#ds_localidade").val() == "")
+	{
+		$("#ds_localidade").focus();
+		/*swal.fire("Erro", "Preencha a descrição", "error");*/
+		$("#ds_localidade").addClass("is-invalid");
+		return false;	
+	}
+	else
+	{
+		$("#ds_localidade").removeClass("is-invalid");	
+		$("#ds_localidade").addClass("is-valid");
+	}
+	if($("#nu_localidade").val() == "")
+	{
+		$("#nu_localidade").focus();
+		//swal.fire("Erro", "Preencha a descrição", "error");
+		$("#nu_localidade").addClass("is-invalid");
+		return false;	
+	}
+	else
+	{
+		$("#nu_localidade").removeClass("is-invalid");	
+		$("#nu_localidade").addClass("is-valid");
+	}
+	if($("#id_cliente").val() == "")
+	{
+		$("#id_cliente").focus();
+		//swal.fire("Erro", "Preencha a descrição", "error");
+		$("#id_cliente").addClass("is-invalid");
+		return false;	
+	}
+	else
+	{
+		$("#id_cliente").removeClass("is-invalid");	
+		$("#id_cliente").addClass("is-valid");
 	}
 
 	
