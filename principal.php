@@ -100,7 +100,7 @@
                                 </form>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" data-dismiss="modal">Salvar</button>
+                                <button type="button" id="salvarPonto" class="btn btn-primary">Salvar</button>
                             </div>
                         </div>
                     </div>
