@@ -1,6 +1,6 @@
 <?php
     require_once("conexao.php");
-    class Cliente{
+    class Principal{
         public function gravarCliente(array $dados)
 		{
 

@@ -3,6 +3,6 @@
 	ini_set('display_startup_erros',1);
 	error_reporting(E_ALL);
 	require_once("../Classes/Principal.php");
-	$cliente = new Cliente();
+	$cliente = new Principal();
 	$cliente->gravarCliente($_POST);
 ?> 
