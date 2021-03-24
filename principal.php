@@ -1,3 +1,12 @@
+<?php
+	ini_set('display_errors',1);
+	ini_set('display_startup_erros',1);
+	error_reporting(E_ALL);
+	require_once("../Classes/Admissao.php");
+
+    $geral = new Geral();
+    $listarCliente = $geral->listarOptionsCliente(NULL);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -91,8 +100,7 @@
                                             <div class="form-group col-md-6">
                                                 <label>Cliente <span class="text-danger">*</span></label>
                                                 <select name="id_cliente" class="form-control" >
-                                                    <option value="">Selecione..</option>
-                                                    <option value="1">Teste</option>
+                                                    <?php echo $listarCliente; ?>
                                                 </select>
                                             </div>
                                         </div>       
