@@ -1,4 +1,4 @@
-
+$('#nu_telefone').maskbrphone()
 $(document).ready(function() {
 	    
 
