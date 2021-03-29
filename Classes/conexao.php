@@ -17,7 +17,7 @@ class Conecta {
 	public static function criarConexao(){
 		try
 		{
-			self::$db = new PDO('mysql:host=localhost;dbname=universo;charset=utf8', 'root', '');
+			self::$db = new PDO('mysql:host=localhost;dbname=universo;charset=utf8', 'root', '85664147');
 			
 	        self::$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             self::$db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
