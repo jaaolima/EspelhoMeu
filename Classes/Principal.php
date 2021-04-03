@@ -88,6 +88,29 @@
     			print $e->getMessage();
 			}
 		}
+		public function listarPonto(array $dados)
+		{
+			try{
+				$con = Conecta::criarConexao();
+				
+				$select = "SELECT id_ponto, ds_localidade, nu_localidade
+							FROM tb_ponto";
+				
+				$stmt = $con->prepare($select); 
+				
+				
+				$stmt->execute();
+
+				return $stmt;
+				
+					
+			}
+			catch(exception $e)
+			{
+				header('HTTP/1.1 500 Internal Server Error');
+    			print "ERRO:".$e->getMessage();		
+			}
+		}
         
     }
 

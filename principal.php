@@ -6,6 +6,7 @@
 
     $Principal = new Principal();
     $listarCliente = $Principal->listarOptionsCliente();
+    $listarPonto = $Principal->listarPonto();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -132,13 +133,17 @@
 
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>teste</td>
-                                        <td>teste</td>
-                                        <td>teste</td>
-                                        <td>teste</td>
-                                        <td>teste</td>
-                                    </tr>
+                                    <?php
+                                        while ($dados = $retorno->fetch())
+                                        {
+                                            echo "<tr>
+                                                    <td>".$dados['id_ponto']."</td>
+                                                    <td>".$dados['ds_localidade']."</td>
+                                                    <td>".$dados['nu_localidade']."</td>
+                                                    <td nowrap></td>
+                                                </tr>";
+                                        }
+                                    ?>
                                     
                                 </tbody>
 
