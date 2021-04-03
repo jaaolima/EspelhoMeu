@@ -127,6 +127,7 @@
                                         <th>ID</th>
                                         <th>Local</th>
                                         <th>Lat/long</th>
+                                        <th>Ações</th>
                                     </tr>
 
                                 </thead>
