@@ -6,7 +6,7 @@
 
     $Principal = new Principal();
     $listarCliente = $Principal->listarOptionsCliente();
-    $listarPonto = $Principal->listarPonto();
+    $listarPonto = $Principal->listarPonto($_POST);
 ?>
 <!DOCTYPE html>
 <html lang="en">
