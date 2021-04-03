@@ -117,6 +117,9 @@
             </div>
         </div>
         <div class="container">
+            <div>
+                <h1>Tabela de Pontos</h1>
+            </div>
             <div class="row justify-content-center">
                 <div class="col-10 mt-5">
                     <div class="card card-custom bgi-no-repeat bgi-size-cover gutter-b bg-white"  >
