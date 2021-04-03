@@ -118,7 +118,7 @@
         </div>
         <div class="container">
             <div>
-                <h1 class="text-black-50">Tabela de Pontos</h1>
+                <h1 class="text-dark">Tabela de Pontos</h1>
             </div>
             <div class="row justify-content-center">
                 <div class="col-12 mt-5">
