@@ -124,11 +124,9 @@
                             <table class="table table-bordered table-hover" id="table">
                                 <thead>
                                     <tr>
-                                        <th>Nome</th>
-                                        <th>Nome</th>
-                                        <th>Nome</th>
-                                        <th>Nome</th>
-                                        <th>Nome</th>
+                                        <th>ID</th>
+                                        <th>Local</th>
+                                        <th>Lat/long</th>
                                     </tr>
 
                                 </thead>
