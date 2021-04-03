@@ -5,7 +5,7 @@
 	require_once("Classes/Principal.php");
 
     $Principal = new Principal();
-    $listarCliente = $Principal->listarOptionsCliente(NULL);
+    $listarCliente = $Principal->listarOptionsCliente();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -159,7 +159,7 @@
     <script scr="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     <script src="./js/datatables.bundle.js" type="text/javascript"></script>
     <script src="./js/principal.js" type="text/javascript"></script>
-    
+
     <!-- Importando o js do bootstrap -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
    

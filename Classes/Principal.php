@@ -61,7 +61,7 @@
     			print "ERRO:".$e->getMessage();		
 			} 
         }
-		public function listarOptionsCliente($id_fisioterapeuta = null)
+		public function listarOptionsCliente()
 		{
 			try{
 				$con = Conecta::criarConexao();
@@ -77,14 +77,7 @@
 
 				while($dados = $stmt->fetch())
 				{
-					if ($dados['id_cliente'] == $id_fisioterapeuta)
-					{
-						$options.= "<option value='".$dados['id_cliente']."' selected>".$dados['ds_nome']."</option>";	
-					}
-					else
-					{
-						$options.= "<option value='".$dados['id_cliente']."'>".$dados['ds_nome']."</option>";
-					}
+					$options.= "<option value='".$dados['id_cliente']."'>".$dados['ds_nome']."</option>";
 				}
 				return $options;
 
