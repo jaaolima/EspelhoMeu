@@ -118,10 +118,10 @@
         </div>
         <div class="container">
             <div>
-                <h1>Tabela de Pontos</h1>
+                <h1 class="text-black-50">Tabela de Pontos</h1>
             </div>
             <div class="row justify-content-center">
-                <div class="col-10 mt-5">
+                <div class="col-12 mt-5">
                     <div class="card card-custom bgi-no-repeat bgi-size-cover gutter-b bg-white"  >
                         <div class="card-body">
                             <table class="table table-bordered table-hover" id="table">
