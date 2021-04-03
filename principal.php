@@ -118,9 +118,9 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-10 mt-5">
-                    <div class="card card-custom bgi-no-repeat bgi-size-cover gutter-b bg-white text-center"  >
-                        <div class="card-body d-flex">
-                            <table class="table table-hover display" id="table">
+                    <div class="card card-custom bgi-no-repeat bgi-size-cover gutter-b bg-white"  >
+                        <div class="card-body">
+                            <table class="table table-striped- table-bordered table-hover table-checkable" id="table">
                                 <thead>
                                     <tr>
                                         <th>Nome</th>
