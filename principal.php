@@ -153,7 +153,7 @@
         </div>       
     </div>
     <!-- Importando o jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>-->
     
     <!-- Importando o js do bootstrap -->
     <script src="./js/datatables.bundle.js" type="text/javascript"></script>
