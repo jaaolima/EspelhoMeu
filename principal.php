@@ -117,7 +117,7 @@
             </div>
         </div>
         <div class="container">
-            <div>
+            <div class="mt-2"
                 <h1 class="text-dark">Tabela de Pontos</h1>
             </div>
             <div class="row justify-content-center">
