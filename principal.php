@@ -34,7 +34,7 @@
                             <a type="button" data-toggle="modal" data-target="#modalPonto" class="nav-link">Adicionar ponto</a>
                         </li>
                         <li class="nav-item mr-2">
-                            <a type="button" data-toggle="modal" data-target="#modalCliente" class="nav-link">Adicionar cliente</a>
+                            <button type="button" data-toggle="modal" data-target="#modalCliente" class="nav-link">Adicionar cliente</button>
                         </li>
                     </ul>
                 </div>   
@@ -117,7 +117,7 @@
             </div>
         </div>
         <div class="container">
-            <div class="mt-2">
+            <div>
                 <h1 class="text-dark">Tabela de Pontos</h1>
             </div>
             <div class="row justify-content-center">
