@@ -93,7 +93,7 @@
 			try{
 				$con = Conecta::criarConexao();
 				
-				$select = "SELECT id_ponto, ds_localidade, nu_localidade, b.16/21, b.18/21, b.20/21, b.22/21
+				$select = "SELECT p.id_ponto, ds_localidade, nu_localidade, b.16/21, b.18/21, b.20/21, b.22/21
 							FROM tb_ponto p
 							RIGHT JOIN bisemana b on p.id_ponto=b.id_ponto";
 				
