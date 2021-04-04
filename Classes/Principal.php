@@ -95,7 +95,7 @@
 				
 				$select = "SELECT id_ponto, ds_localidade, nu_localidade, b.16/21, b.18/21, b.20/21, b.22/21
 							FROM tb_ponto p
-							RIGHT JOIN bisemanas b on p.id_ponto=b.id_ponto";
+							RIGHT JOIN bisemana b on p.id_ponto=b.id_ponto";
 				
 				$stmt = $con->prepare($select); 
 				
