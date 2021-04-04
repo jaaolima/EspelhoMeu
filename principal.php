@@ -146,10 +146,10 @@
                                                     <td>".$dados['id_ponto']."</td>
                                                     <td>".$dados['ds_localidade']."</td>
                                                     <td>".$dados['nu_localidade']."</td>
-                                                    <td>".$dados['16/21']."</td>
-                                                    <td>".$dados['18/21']."</td>
-                                                    <td>".$dados['20/21']."</td>
-                                                    <td>".$dados['22/21']."</td>
+                                                    <td>".$dados["'16/21'"]."</td>
+                                                    <td>".$dados["'18/21'"]."</td>
+                                                    <td>".$dados["'20/21'"]."</td>
+                                                    <td>".$dados["'22/21'"]."</td>
                                                     <td nowrap></td>
                                                 </tr>";
                                         }
