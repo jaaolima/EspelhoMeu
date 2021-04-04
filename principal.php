@@ -147,9 +147,9 @@
                                                     <td>".$dados['ds_localidade']."</td>
                                                     <td>".$dados['nu_localidade']."</td>
                                                     <td>".$dados['b.16/21']."</td>
-                                                    <td>".$dados["'18/21'"]."</td>
-                                                    <td>".$dados["'20/21'"]."</td>
-                                                    <td>".$dados["'22/21'"]."</td>
+                                                    <td>".$dados['b.18/21']."</td>
+                                                    <td>".$dados['b.20/21']."</td>
+                                                    <td>".$dados['b.22/21']."</td>
                                                     <td nowrap></td>
                                                 </tr>";
                                         }
