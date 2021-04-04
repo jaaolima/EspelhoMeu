@@ -34,7 +34,7 @@
                             <a type="button" data-toggle="modal" data-target="#modalPonto" class="nav-link">Adicionar ponto</a>
                         </li>
                         <li class="nav-item mr-2">
-                            <button type="button" data-toggle="modal" data-target="#modalCliente" class="nav-link">Adicionar cliente</button>
+                            <a type="button" data-toggle="modal" data-target="#modalCliente" class="nav-link">Adicionar cliente</a>
                         </li>
                     </ul>
                 </div>   
@@ -118,18 +118,22 @@
         </div>
         <div class="container">
             <div>
-                <h1 class="text-dark">Tabela de Pontos</h1>
+                <h1 class="text-dark">Meus pontos</h1>
             </div>
             <div class="row justify-content-center">
                 <div class="col-12 mt-5">
                     <div class="card card-custom bgi-no-repeat bgi-size-cover gutter-b bg-white"  >
                         <div class="card-body">
-                            <table class="table table-bordered table-hover" id="table">
+                            <table class="table table-hover" id="table">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
                                         <th>Local</th>
                                         <th>Lat/long</th>
+                                        <th>16/21</th>
+                                        <th>18/21</th>
+                                        <th>20/21</th>
+                                        <th>22/21</th>
                                         <th>Ações</th>
                                     </tr>
 
@@ -142,6 +146,10 @@
                                                     <td>".$dados['id_ponto']."</td>
                                                     <td>".$dados['ds_localidade']."</td>
                                                     <td>".$dados['nu_localidade']."</td>
+                                                    <td>".$dados['16/21']."</td>
+                                                    <td>".$dados['18/21']."</td>
+                                                    <td>".$dados['20/21']."</td>
+                                                    <td>".$dados['22/21']."</td>
                                                     <td nowrap></td>
                                                 </tr>";
                                         }
