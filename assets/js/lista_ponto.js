@@ -42,7 +42,7 @@ var DatatablesBasicBasic = function() {
 					render: function(data, type, full, meta) {
 						return `
                         
-                         <a href="appCliente/alterar_cadastro.php?id_cliente=`+full[0]+`"" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Visualizar Cadastro">
+                         <a href="appPonto/ver_ponto.php?id_ponto=`+full[0]+`"" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Visualizar Cadastro">
                           <i class="la la-edit"></i>
                         </a>
                         `;
@@ -61,57 +61,6 @@ var DatatablesBasicBasic = function() {
 		table.on('change', 'tbody tr .m-checkbox', function() {
 			$(this).parents('tr').toggleClass('active');
 		});	
-
-		/*table.on('click', '#btn-frequencia', function() {
-			
-			var id_aula = $(this).data("aula");
-
-			redirectTo("appDiario/cadastro_frequencia.php?id_aula="+id_aula);
-			
-		});*/
-
-		table.on('click', '#btn-editar', function() {
-
-			redirectTo("appPonto/alterar_cadastro");
-			
-		});
-
-		/*table.on('click', '#btn-excluir', function() {
-			var id_aula = $(this).data("aula");
-
-			swal({
-	            title: 'Tem certeza?',
-	            text: "Desejar excluir a aula e todas as frequências associadas?",
-	            type: 'warning',
-	            showCancelButton: true,
-	            confirmButtonText: 'Sim, posseguir!',
-				cancelButtonText: 'Cancelar'
-	        }).then(function(result) {
-	            if (result.value) {
-					$.ajax({
-				        url: 'appDiario/excluir_aula.php'
-				        , type: 'post'
-				        , data: {id_aula : id_aula}
-				        , success: function(html) {
-							swal('Pronto!',html,'success');
-							$.ajax({
-						        url: 'appDiario/listar_aula.php'
-						        , type: 'post'
-						        , data: $("#busca_aula").serialize()
-						        , success: function(html) {
-						        	$("#lista").html(html);
-						        }
-						        , error: function(xhr, status, error) {
-								  	swal("Erro", xhr.responseText, "error");
-								}
-						    });						
-				        }
-				    });
-	                
-	            }
-	        });
-			
-		}); */
 		
 	};
 
