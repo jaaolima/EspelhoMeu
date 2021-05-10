@@ -6,7 +6,7 @@ var DatatablesBasicBasic = function() {
 		// begin first table
 		table.DataTable({
 			responsive: true,
-			retrieve: true,
+			retrieve: true, 
 			
 
 			//== DOM Layout settings
