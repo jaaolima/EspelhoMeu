@@ -67,7 +67,7 @@
             </div>
         </div>       
     </div>
-    <script src="../assets/js/lista_ponto.js" type="text/javascript"></script>
+    <script src="./assets/js/lista_ponto.js" type="text/javascript"></script>
 </body>
 
 </html>
