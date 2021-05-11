@@ -3,6 +3,10 @@
 	ini_set('display_startup_erros',1);
 	error_reporting(E_ALL);
 	require_once("../Classes/Ponto.php");
+    require_once("../Classes/Bisemana.php");
+
+    $bisemana = new Bisemana();
+    $retorno = $bisemana->listarBisemana($_POST);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,20 +40,30 @@
                                     <h5 class="modal-title">Adicionar Cliente</h5>
                                 </div>
                                 <div class="modal-body">
-                                    <table  class="table table-hover">
+                                    <table  class="table table-hover" id="table_bisemana">
                                         <thead>
                                             <tr>
-                                                <th>Bissemanas Disponiveis</th>
+                                                <th>ID bisemanas</th>
+                                                <th>Bisemanas Disponiveis</th>
                                                 <th>Data Inicial</th>
                                                 <th>Data Final</th>
                                                 <th>Ações</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <td>12</td>
-                                            <td>12/12/12</td>
-                                            <td>12/12/12</td>
-                                            <td><input type="checkbox"></td>
+                                            <?php
+                                                while ($dados = $retorno->fetch())
+                                                {
+                                                    echo "<tr>
+                                                            <td>".$dados['id_bisemana']."</td>
+                                                            <td>".$dados['ds_bisemana']."</td>
+                                                            <td>".$dados['dt_inicial']."</td>
+                                                            <td>".$dados['dt_final']."</td>
+                                                            <td><input value='".$dados['id_bisemana']."' type='checkbox'></td>
+                                                            <td nowrap></td>
+                                                        </tr>";
+                                                }
+                                             ?>
                                         </tbody>
                                     </table>
                                     <div class="d-flex">

@@ -4,7 +4,7 @@
 	error_reporting(E_ALL);
 	require_once("../Classes/Ponto.php");
 
-    $ponto = new Ponto();
+    $ponto = new Ponto(); 
     $retorno = $ponto->listarPonto($_POST);
 ?>
 <!DOCTYPE html>
@@ -32,11 +32,23 @@
                             <?php
                                 while ($dados = $retorno->fetch())
                                 {
+                                    $id_status = $dados['id_status'];
+                                    switch($id_status){
+                                        case 1:
+                                            $status = "<span class='label label-xl label-dot label-success'>";
+                                            break;
+                                        case 2:
+                                            $status = "<span class='label label-xl label-dot label-warning'>";
+                                            break;
+                                        case 3:
+                                            $status = "<span class='label label-xl label-dot label-danger'>";
+                                            break;
+                                    };
                                     echo "<tr>
                                             <td>".$dados['id_ponto']."</td>
                                             <td>".$dados['ds_localidade']."</td>
                                             <td>".$dados['nu_localidade']."</td>
-                                            <td><span class='label label-xl label-dot label-success'></span></td>
+                                            <td>".$status."</td>
                                             <td nowrap></td>
                                         </tr>";
                                 }

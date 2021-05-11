@@ -36,8 +36,31 @@
 			try{
 				$con = Conecta::criarConexao();
 				
-				$select = "SELECT p.id_ponto, ds_localidade, nu_localidade
+				$select = "SELECT p.id_ponto, ds_localidade, nu_localidade, id_status
 							FROM tb_ponto p";
+				
+				$stmt = $con->prepare($select); 
+				
+				
+				$stmt->execute();
+
+				return $stmt;
+				
+					
+			}
+			catch(exception $e)
+			{
+				header('HTTP/1.1 500 Internal Server Error');
+    			print "ERRO:".$e->getMessage();		
+			}
+		}
+		public function listarPontoCliente($id_cliente)
+		{
+			try{
+				$con = Conecta::criarConexao();
+				
+				$select = "SELECT id_ponto, ds_localidade, nu_localidade, id_status
+							FROM tb_ponto ";
 				
 				$stmt = $con->prepare($select); 
 				
