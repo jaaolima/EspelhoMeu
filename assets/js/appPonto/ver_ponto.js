@@ -27,12 +27,6 @@ var KTCalendarBasic = function() {
                 nowIndicator: true,
                 now: TODAY + 'T09:25:00', // just for demo
 
-                views: {
-                    dayGridMonth: { buttonText: 'month' },
-                    timeGridWeek: { buttonText: 'week' },
-                    timeGridDay: { buttonText: 'day' }
-                },
-
                 defaultView: 'dayGridMonth',
                 defaultDate: TODAY,
 
@@ -44,12 +38,12 @@ var KTCalendarBasic = function() {
                     {
                         title: 'All Day Event',
                         start: YM + '-01',
-                        description: 'Toto lorem ipsum dolor sit incid idunt ut',
-                        className: "fc-event-danger fc-event-solid-warning",
-                        color: KTApp.getStateColor('info'),
+                        end: YM + '-14',
+                        className: "fc-event-sucess",
+                        color: 'green',
                         rendering: 'background'
-                    },
-                    {
+                    }
+                    /*{
                         title: 'Reporting',
                         start: YM + '-14T13:30:00',
                         description: 'Lorem ipsum dolor incid idunt ut labore',
@@ -150,13 +144,13 @@ var KTCalendarBasic = function() {
                         description: 'Lorem ipsum dolor sit amet, labore',
                         color: KTApp.getStateColor('success'),
                         rendering: 'background'
-                    }
+                    }*/
                 ],
 
                 /*eventRender: function(info) {
                     var element = $(info.el);
 
-                    if (info.event.extendedProps &amp;&amp; info.event.extendedProps.description) {
+                    if (info.event.extendedProps, info.event.extendedProps.description) {
                         if (element.hasClass('fc-day-grid-event')) {
                             element.data('content', info.event.extendedProps.description);
                             element.data('placement', 'top');

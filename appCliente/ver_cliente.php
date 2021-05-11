@@ -2,6 +2,7 @@
 	ini_set('display_errors',1);
 	ini_set('display_startup_erros',1);
 	error_reporting(E_ALL);
+	require_once("../Classes/Cliente.php");
 	require_once("../Classes/Ponto.php");
 
     $ponto = new Ponto();
@@ -11,10 +12,28 @@
 <html lang="en">
 <body>
     <div class="my-8">
-        <h1 class="text-dark font-weight-bolder">Meus Pontos</h1>
+        <h1 class="text-dark font-weight-bolder">Cliente: </h1>
     </div>
-    <div class="row justify-content-center">
-        <div class="col-9 ">
+    <div class="row">
+        <div class="col-6">
+            <div class="card card-custom bgi-no-repeat bgi-size-cover gutter-b bg-white p-8" >
+                <h3>Detalhes:</h3>
+                <div class="d-block mt-2">
+                    <p>Nome:</p>
+                    <p>Empresa:</p>
+                    <p>Contato:</p>
+                </div>
+            </div>
+            
+        </div>
+        <div class="col-6">
+            <div class="card card-custom bgi-no-repeat bgi-size-cover gutter-b bg-white p-8" >
+                <h3></h3>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-9">
             <div class="card card-custom bgi-no-repeat bgi-size-cover gutter-b bg-white"  >
                 <div class="card-body">
                     <table class="table table-hover" id="table_ponto">
@@ -72,7 +91,7 @@
             
     </div>
     <script src="./assets/js/datatables.bundle.js" type="text/javascript"></script>
-    <script src="./assets/js/appPonto/lista_ponto.js" type="text/javascript"></script>
+    <script src="./assets/js/appCliente/ver_cliente.js" type="text/javascript"></script>
 </body>
 
 </html>

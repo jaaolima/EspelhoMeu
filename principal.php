@@ -37,8 +37,8 @@
     <div class="w-100">
         <div class="row m-0 bg-dark h-auto p-0">
             <div>
-                <ul class="nav nav-tabs float-end mt-4">
-                <li class="nav-item mr-2">
+                <ul class="nav nav-pills float-end mt-4" id="myTab" role="tablist">
+                    <li class="nav-item mr-2">
                         <a href="principal.php" class="nav-link">Dashboard</a>
                     </li>
                     <li class="nav-item mr-2">
@@ -51,7 +51,7 @@
             </div>   
         </div>
         <div class="container" id="conteudo">
-            <div class="my-4">
+            <div class="my-8">
                 <h1 class="text-dark font-weight-bolder">Dashboard</h1>
             </div>
         </div>       

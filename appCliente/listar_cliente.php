@@ -10,11 +10,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <body>
-    <div class="my-4">
+    <div class="my-8">
         <h1 class="text-dark font-weight-bolder">Meus Clientes</h1>
     </div>
     <div class="row justify-content-center">
-        <div class="col-12 mt-5">
+        <div class="col-12">
             <div class="card card-custom bgi-no-repeat bgi-size-cover gutter-b bg-white"  >
                 <div class="card-body">
                     <table class="table table-hover" id="table_cliente">
@@ -50,7 +50,7 @@
             
     </div>
     <script src="./assets/js/datatables.bundle.js" type="text/javascript"></script>
-    <script src="./assets/js/lista_cliente.js" type="text/javascript"></script>
+    <script src="./assets/js/appCliente/lista_cliente.js" type="text/javascript"></script>
 </body>
 
 </html>
