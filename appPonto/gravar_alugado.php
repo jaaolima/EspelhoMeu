@@ -4,5 +4,5 @@
 	error_reporting(E_ALL);
 	require_once("../Classes/Ponto.php");
 	$ponto = new Ponto();
-	$ponto->gravarPonto($_POST);
+	$ponto->gravarAlugado($_POST);
 ?> 

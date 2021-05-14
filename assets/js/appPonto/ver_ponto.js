@@ -1,173 +1,163 @@
-var KTCalendarBasic = function() {
 
-    return {
-        //main function to initiate the module
-        init: function() {
-            var todayDate = moment().startOf('day');
-            var YM = todayDate.format('YYYY-MM');
-            var YESTERDAY = todayDate.clone().subtract(1, 'day').format('YYYY-MM-DD');
-            var TODAY = todayDate.format('YYYY-MM-DD');
-            var TOMORROW = todayDate.clone().add(1, 'day').format('YYYY-MM-DD');
+$(document).ready(function() {
+	    
+	$("#adicionar").on("click", function(e){ 
+		$.ajax({
+			url: 'appPonto/gravar_alugado.php'
+			, data: $("#form_bisemana").serialize()
+			, type: 'post'
+			, success: function(html) {
+				swal.fire({
+					position: 'top-right',
+					type: 'success',
+					title: html,
+					showConfirmButton: true
+				});
+				$('#modal').modal('hide');
+							
+			}
+			, error: function (data) {
+				swal.fire("Erro", data.responseText, "error");
+			}
+		});		
+	
+	});
+	
+});
+$(document).ready(function() {
+	    
+	$("#salvar").on("click", function(e){ 
+		if(validarPonto())
+		{ 
+			$.ajax({
+		        url: 'appPonto/gravar_alterar_ponto.php'
+				, data: $("#form_ponto").serialize()
+		        , type: 'post'
+		        , success: function(html) {
+		        	swal.fire({
+		                position: 'top-right',
+		                type: 'success',
+		                title: html,
+		                showConfirmButton: true
+		            });
+                    $('#modalCadastro').modal('hide');
+					          
+		        }
+				, error: function (data) {
+					swal.fire("Erro", data.responseText, "error");
+				}
+		    });		
+		}	
+	});
+	
+});
 
-            var calendarEl = document.getElementById('kt_calendar');
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-                plugins: [ 'interaction', 'dayGrid', 'timeGrid', 'list' ],
 
-                isRTL: KTUtil.isRTL(),
-                header: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
-                },
+$("#nu_localidade").inputmask({
+	"mask": "99.9999/99.9999",
+	autoUnmask: false,
+});
 
-                height: 800,
-                contentHeight: 780,
-                aspectRatio: 3,  // see: https://fullcalendar.io/docs/aspectRatio
 
-                nowIndicator: true,
-                now: TODAY + 'T09:25:00', // just for demo
+function validarPonto()
+{
+	if($("#ds_localidade").val() == "")
+	{
+		$("#ds_localidade").focus();
+		swal.fire("Erro", "Preencha a descrição", "error");
+		$("#ds_localidade").addClass("is-invalid");
+		return false;	
+	}
+	else
+	{
+		$("#ds_localidade").removeClass("is-invalid");	
+		$("#ds_localidade").addClass("is-valid");
+	}
+	if($("#nu_localidade").val() == "")
+	{
+		$("#nu_localidade").focus();
+		swal.fire("Erro", "Preencha a descrição", "error");
+		$("#nu_localidade").addClass("is-invalid");
+		return false;	
+	}
+	else
+	{
+		$("#nu_localidade").removeClass("is-invalid");	
+		$("#nu_localidade").addClass("is-valid");
+	}
+	if($("#id_tipo option:selected").val() == "")
+	{
+		$("#id_tipo").focus();
+		swal.fire("Erro", "Preencha a descrição", "error");
+		$("#id_tipo").addClass("is-invalid");
+		return false;	
+	}
+	else
+	{
+		$("#id_tipo").removeClass("is-invalid");	
+		$("#id_tipo").addClass("is-valid");
+	}
 
-                defaultView: 'dayGridMonth',
-                defaultDate: TODAY,
+	return true;
+}
 
-                editable: true,
-                eventLimit: true, // allow "more" link when too many events
-                navLinks: true,
-                businessHours: true, // display business hours
-                events: [
-                    {
-                        title: 'All Day Event',
-                        start: YM + '-01',
-                        end: YM + '-14',
-                        className: "fc-event-sucess",
-                        color: 'green',
-                        rendering: 'background'
-                    }
-                    /*{
-                        title: 'Reporting',
-                        start: YM + '-14T13:30:00',
-                        description: 'Lorem ipsum dolor incid idunt ut labore',
-                        end: YM + '-14',
-                        className: "fc-event-success"
-                    },
-                    {
-                        title: 'Company Trip',
-                        start: YM + '-02',
-                        description: 'Lorem ipsum dolor sit tempor incid',
-                        end: YM + '-03',
-                        className: "fc-event-primary"
-                    },
-                    {
-                        title: 'ICT Expo 2017 - Product Release',
-                        start: YM + '-03',
-                        description: 'Lorem ipsum dolor sit tempor inci',
-                        end: YM + '-05',
-                        className: "fc-event-light fc-event-solid-primary"
-                    },
-                    {
-                        title: 'Dinner',
-                        start: YM + '-12',
-                        description: 'Lorem ipsum dolor sit amet, conse ctetur',
-                        end: YM + '-10',
-                        color: KTApp.getStateColor('info'),
-                        rendering: 'background'
-                    },
-                    {
-                        id: 999,
-                        title: 'Repeating Event',
-                        start: YM + '-09T16:00:00',
-                        description: 'Lorem ipsum dolor sit ncididunt ut labore',
-                        className: "fc-event-danger"
-                    },
-                    {
-                        id: 1000,
-                        title: 'Repeating Event',
-                        description: 'Lorem ipsum dolor sit amet, labore',
-                        start: YM + '-16T16:00:00',
-                        color: KTApp.getStateColor('warning'),
-                        rendering: 'background'
-                    },
-                    {
-                        title: 'Conference',
-                        start: YESTERDAY,
-                        end: TOMORROW,
-                        description: 'Lorem ipsum dolor eius mod tempor labore',
-                        className: "fc-event-primary"
-                    },
-                    {
-                        title: 'Meeting',
-                        start: TODAY + 'T10:30:00',
-                        end: TODAY + 'T12:30:00',
-                        description: 'Lorem ipsum dolor eiu idunt ut labore',
-                        color: KTApp.getStateColor('danger'),
-                        rendering: 'background'
-                    },
-                    {
-                        title: 'Lunch',
-                        start: TODAY + 'T12:00:00',
-                        className: "fc-event-info",
-                        description: 'Lorem ipsum dolor sit amet, ut labore'
-                    },
-                    {
-                        title: 'Meeting',
-                        start: TODAY + 'T14:30:00',
-                        className: "fc-event-warning",
-                        description: 'Lorem ipsum conse ctetur adipi scing'
-                    },
-                    {
-                        title: 'Happy Hour',
-                        start: TODAY + 'T17:30:00',
-                        className: "fc-event-info",
-                        description: 'Lorem ipsum dolor sit amet, conse ctetur',
-                        color: KTApp.getStateColor('danger'),
-                        rendering: 'background'
-                    },
-                    {
-                        title: 'Dinner',
-                        start: TOMORROW + 'T05:00:00',
-                        className: "fc-event-solid-danger fc-event-light",
-                        description: 'Lorem ipsum dolor sit ctetur adipi scing'
-                    },
-                    {
-                        title: 'Birthday Party',
-                        start: TOMORROW + 'T07:00:00',
-                        className: "fc-event-primary",
-                        description: 'Lorem ipsum dolor sit amet, scing',
-                        color: KTApp.getStateColor('danger'),
-                        rendering: 'background'
-                    },
-                    {
-                        title: 'Click for Google',
-                        url: 'http://google.com/',
-                        start: YM + '-28',
-                        className: "fc-event-solid-info fc-event-light",
-                        description: 'Lorem ipsum dolor sit amet, labore',
-                        color: KTApp.getStateColor('success'),
-                        rendering: 'background'
-                    }*/
-                ],
 
-                /*eventRender: function(info) {
-                    var element = $(info.el);
+var DatatablesBasicBasic = function() {
 
-                    if (info.event.extendedProps, info.event.extendedProps.description) {
-                        if (element.hasClass('fc-day-grid-event')) {
-                            element.data('content', info.event.extendedProps.description);
-                            element.data('placement', 'top');
-                            KTApp.initPopover(element);
-                        } else if (element.hasClass('fc-time-grid-event')) {
-                            element.find('.fc-title').append('&lt;div class="fc-description"&gt;' + info.event.extendedProps.description + '&lt;/div&gt;');
-                        } else if (element.find('.fc-list-item-title').lenght !== 0) {
-                            element.find('.fc-list-item-title').append('&lt;div class="fc-description"&gt;' + info.event.extendedProps.description + '&lt;/div&gt;');
-                        }
-                    }
-                }*/
-            });
+	var initTable1 = function() {
+		var table = $('#table_bisemana');
 
-            calendar.render();
-        }
-    };
+		// begin first table
+		table.DataTable({
+			responsive: true,
+			retrieve: true, 
+			
+
+			//== DOM Layout settings
+			dom: `f<'row'<'col-sm-12'tr>>
+			<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7 dataTables_pager'lp>>`,
+
+			lengthMenu: [5, 10, 25, 50],
+
+			pageLength: 10,
+
+			language: {
+				'lengthMenu': 'Mostrar _MENU_',
+			},
+
+			//== Order settings
+			order: [[1, 'asc']],
+
+
+			columnDefs: [
+
+				{
+					targets: 0,
+					visible: false
+				},
+				
+				
+			],
+		});
+	
+
+		table.on('change', 'tbody tr .m-checkbox', function() {
+			$(this).parents('tr').toggleClass('active');
+		});	
+		
+	};
+
+	return {
+
+		//main function to initiate the module
+		init: function() {
+			initTable1();
+		},
+
+	};
+
 }();
+
 jQuery(document).ready(function() {
-    KTCalendarBasic.init();
+	DatatablesBasicBasic.init();
 });

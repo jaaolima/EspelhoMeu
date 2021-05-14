@@ -1,3 +1,75 @@
+$(document).ready(function() {
+	    
+	$("#salvar").on("click", function(e){ 
+		if(validarCliente())
+		{ 
+			$.ajax({
+		        url: 'appCliente/gravar_cliente.php'
+				, data: $("#form_cliente").serialize()
+		        , type: 'post'
+		        , success: function(html) {
+		        	swal.fire({
+		                position: 'top-right',
+		                type: 'success',
+		                title: html,
+		                showConfirmButton: true
+		            });		
+					$('#modal').modal('hide');            
+		        }
+				, error: function (data) {
+					swal.fire("Erro", data.responseText, "error");
+				}
+		    });		
+		}	
+	});
+});
+
+$("#nu_telefone").inputmask({
+	"mask": "(99)99999-9999",
+	autoUnmask: false,
+});
+
+function validarCliente()
+{
+	if($("#ds_nome").val() == "")
+	{
+		$("#ds_nome").focus();
+		/*swal.fire("Erro", "Preencha a descrição", "error");*/
+		$("#ds_nome").addClass("is-invalid");
+		return false;	
+	}
+	else
+	{
+		$("#ds_nome").removeClass("is-invalid");	
+		$("#ds_nome").addClass("is-valid");
+	}
+	if($("#ds_empresa").val() == "")
+	{
+		$("#ds_empresa").focus();
+		//swal.fire("Erro", "Preencha a descrição", "error");
+		$("#ds_empresa").addClass("is-invalid");
+		return false;	
+	}
+	else
+	{
+		$("#ds_empresa").removeClass("is-invalid");	
+		$("#ds_empresa").addClass("is-valid");
+	}
+	if($("#nu_telefone").val() == "")
+	{
+		$("#nu_telefone").focus();
+		//swal.fire("Erro", "Preencha a descrição", "error");
+		$("#nu_telefone").addClass("is-invalid");
+		return false;	
+	}
+	else
+	{
+		$("#nu_telefone").removeClass("is-invalid");	
+		$("#nu_telefone").addClass("is-valid");
+	}
+
+	return true;
+}
 var DatatablesBasicBasic = function() {
 
 	var initTable1 = function() {
@@ -57,7 +129,7 @@ var DatatablesBasicBasic = function() {
 			],
 		});
 	
-
+ 
 		table.on('change', 'tbody tr .m-checkbox', function() {
 			$(this).parents('tr').toggleClass('active');
 		});	

@@ -7,13 +7,45 @@
     $cliente = new Cliente();
     $retorno = $cliente->listarCliente($_POST);
 ?>
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <body>
     <div class="my-8">
         <h1 class="text-dark font-weight-bolder">Meus Clientes</h1>
     </div>
     <div class="row justify-content-center">
+        <div class="text-right w-100 mb-5 mr-3">
+            <button class="btn btn-primary" data-toggle="modal" data-target="#modal">Adicionar cliente</button>
+        </div>
+        <div class="modal fade" id="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" >Gravar Cliente</h5>
+                    </div>
+                    <div class="modal-body">
+                        <form id="form_cliente">
+                            <div class="form-group col-md-3">
+                                <label>Nome: <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="ds_nome" name="ds_nome" />
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>Empresa: <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="ds_empresa" name="ds_empresa" />
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>Contato: <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="nu_telefone" name="nu_telefone" />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button type="button" id="salvar" class="btn btn-primary">Salvar</button>
+                    </div>
+                </div> 
+            </div>
+        </div>
         <div class="col-12">
             <div class="card card-custom bgi-no-repeat bgi-size-cover gutter-b bg-white"  >
                 <div class="card-body">
@@ -42,7 +74,7 @@
                             
                         </tbody>
 
-                    </table>
+                    </table> 
                 </div>
             </div>
             

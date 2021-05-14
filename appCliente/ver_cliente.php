@@ -23,7 +23,7 @@
     <div class="row">
         <div class="col-6">
             <div class="card card-custom bgi-no-repeat bgi-size-cover gutter-b bg-white p-8" >
-                <h3>Detalhes:</h3>
+                <h3 class="font-weight-bolder">Detalhes:</h3>
                 <div class="d-block mt-2">
                     <div class="d-flex">
                         <p>Nome: </p>
@@ -52,7 +52,7 @@
                                     <div class="form-group col-md-3">
                                         <label>Nome: <span class="text-danger">*</span></label>
                                         <input type="text" class="form-control" id="ds_nome" name="ds_nome" value="<?php echo $dados['ds_nome']?>"/>
-                                    </div>
+                                   </div>
                                     <div class="form-group col-md-3">
                                         <label>Empresa: <span class="text-danger">*</span></label>
                                         <input type="text" class="form-control" id="ds_empresa" name="ds_empresa" value="<?php echo $dados['ds_empresa']?>"/>
@@ -68,7 +68,7 @@
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                                 <button type="button" id="salvar" class="btn btn-primary">Salvar</button>
                             </div>
-                        </div>
+                        </div> 
                     </div>
                 </div>
             </div>
@@ -85,6 +85,7 @@
             <div class="card card-custom bgi-no-repeat bgi-size-cover gutter-b bg-white"  >
                 <div class="card-body">
                     <table class="table table-hover" id="table_ponto">
+                        <h3 class="font-weight-bolder">Seus Pontos:</h3>
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -99,18 +100,17 @@
                             <?php
                                 while ($dados = $retorno->fetch())
                                 {
-                                    $id_status = $dados['id_status'];
-                                    switch($id_status){
-                                        case 1:
-                                            $status = "<span class='label label-xl label-dot label-success'>";
-                                            break;
-                                        case 2:
-                                            $status = "<span class='label label-xl label-dot label-warning'>";
-                                            break;
-                                        case 3:
-                                            $status = "<span class='label label-xl label-dot label-danger'>";
-                                            break;
-                                    };
+                                    $hoje = date('Y-m-d');
+                                    
+                                    if($hoje >= $dados["dt_inicial"] && $dados["dt_final"] >= $hoje){
+                                        $status = "<span class='label label-xl label-dot label-danger'>";
+                                    }
+                                    if($hoje > $dados["dt_final"] && empty($dados["dt_final"])){
+                                        $status = "<span class='label label-xl label-dot label-warning'>";
+                                    }
+                                    if(empty($dados["dt_final"]) && empty($dados["dt_inicial"])){
+                                        $status = "<span class='label label-xl label-dot label-success'>";
+                                    }
                                     echo "<tr>
                                             <td>".$dados['id_ponto']."</td>
                                             <td>".$dados['ds_localidade']."</td>

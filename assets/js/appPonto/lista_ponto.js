@@ -1,3 +1,77 @@
+$(document).ready(function() {
+	    
+	$("#salvar").on("click", function(e){ 
+		if(validarPonto())
+		{ 
+			$.ajax({
+		        url: 'appPonto/gravar_ponto.php'
+				, data: $("#form_ponto").serialize()
+		        , type: 'post'
+		        , success: function(html) {
+		        	swal.fire({
+		                position: 'top-right',
+		                type: 'success',
+		                title: html,
+		                showConfirmButton: true
+		            });		
+					$('#modal').modal('hide');            
+		        }
+				, error: function (data) {
+					swal.fire("Erro", data.responseText, "error");
+				}
+		    });		
+		}	
+	});
+	
+});
+
+$("#nu_localidade").inputmask({
+	"mask": "99.9999/99.9999",
+	autoUnmask: false,
+});
+
+
+function validarPonto()
+{
+	if($("#ds_localidade").val() == "")
+	{
+		$("#ds_localidade").focus();
+		swal.fire("Erro", "Preencha a descrição", "error");
+		$("#ds_localidade").addClass("is-invalid");
+		return false;	
+	}
+	else
+	{
+		$("#ds_localidade").removeClass("is-invalid");	
+		$("#ds_localidade").addClass("is-valid");
+	}
+	if($("#nu_localidade").val() == "")
+	{
+		$("#nu_localidade").focus();
+		swal.fire("Erro", "Preencha a descrição", "error");
+		$("#nu_localidade").addClass("is-invalid");
+		return false;	
+	}
+	else
+	{
+		$("#nu_localidade").removeClass("is-invalid");	
+		$("#nu_localidade").addClass("is-valid");
+	}
+	if($("#id_tipo option:selected").val() == "")
+	{
+		$("#id_tipo").focus();
+		swal.fire("Erro", "Preencha a descrição", "error");
+		$("#id_tipo").addClass("is-invalid");
+		return false;	
+	}
+	else
+	{
+		$("#id_tipo").removeClass("is-invalid");	
+		$("#id_tipo").addClass("is-valid");
+	}
+
+	return true;
+}
 var DatatablesBasicBasic = function() {
 
 	var initTable1 = function() {
