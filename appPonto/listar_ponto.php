@@ -84,13 +84,13 @@
                                     $hoje = date('Y-m-d');
                                     
                                     if($hoje >= $dados["dt_inicial"] && $dados["dt_final"] >= $hoje){
-                                        $status = "<span class='label label-xl label-dot label-danger'><p>Indisponível</p>";
+                                        $status = "<span class='label label-xl label-dot label-danger'></span><p>Indisponível</p>";
                                     }
                                     if($hoje < $dados["dt_inicial"]){
-                                        $status = "<span class='label label-xl label-dot label-warning'><p>Disponível no momento</p>";
+                                        $status = "<span class='label label-xl label-dot label-warning'></span><p>Disponível no momento</p>";
                                     }
                                     if(empty($dados["dt_final"]) && empty($dados["dt_inicial"])){
-                                        $status = "<span class='label label-xl label-dot label-success'><p>Disponível</p>";
+                                        $status = "<span class='label label-xl label-dot label-success'></span><p>Disponível</p>";
                                     }
                                     
                                     echo "<tr>
