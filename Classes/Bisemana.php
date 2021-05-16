@@ -7,6 +7,16 @@
 			try{
 				$con = Conecta::criarConexao();
 				
+				/*$selectBisemana = "SELECT id_bisemana from tb_alugado where id_ponto=:id_ponto";
+				$stmtBisemana = $con->prepare($selectBisemana); 
+				$paramsBisemana = array(':id_ponto' => $id_ponto);
+
+				$stmtBisemana->execute($paramsBisemana);
+
+				/*$array = explode(',', $stmtBisemana);
+
+				echo $array;*/
+				
 				$select = "SELECT id_bisemana, ds_bisemana, dt_final, dt_inicial
 							FROM tb_bisemana
 							where dt_final > :hoje

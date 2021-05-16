@@ -90,8 +90,9 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Local</th>
+                                <th>Data Inicial</th>
+                                <th>Data Final</th>
                                 <th>Lat/long</th>
-                                <th>Status</th>
                                 <th>Ações</th>
                             </tr>
 
@@ -100,22 +101,15 @@
                             <?php
                                 while ($dados = $retorno->fetch())
                                 {
-                                    $hoje = date('Y-m-d');
-                                    
-                                    if($hoje >= $dados["dt_inicial"] && $dados["dt_final"] >= $hoje){
-                                        $status = "<span class='label label-xl label-dot label-danger'>";
-                                    }
-                                    if($hoje > $dados["dt_final"] && empty($dados["dt_final"])){
-                                        $status = "<span class='label label-xl label-dot label-warning'>";
-                                    }
-                                    if(empty($dados["dt_final"]) && empty($dados["dt_inicial"])){
-                                        $status = "<span class='label label-xl label-dot label-success'>";
-                                    }
+                                    $dt_inicial = date('d/m/Y', strtotime($dados["dt_inicial"]));
+                                    $dt_final = date('d/m/Y', strtotime($dados["dt_final"]));
+
                                     echo "<tr>
                                             <td>".$dados['id_ponto']."</td>
                                             <td>".$dados['ds_localidade']."</td>
+                                            <td>".$dt_inicial."</td>
+                                            <td>".$dt_final."</td>
                                             <td>".$dados['nu_localidade']."</td>
-                                            <td>".$status."</td>
                                             <td nowrap></td>
                                         </tr>";
                                 }

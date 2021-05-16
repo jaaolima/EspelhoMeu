@@ -16,14 +16,15 @@
     $dadosPonto = $ponto->BuscarDadosPonto($id_ponto);
     $listarCliente = $cliente->listarOptionsCliente();
     $retorno = $bisemana->listarBisemana($id_ponto);
+    $retornoData = $ponto->listarAlugado($id_ponto);
     $alugado = $ponto->listarAlugado($id_ponto);
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <body>
     <div class="my-8 d-flex">
-        <h1 class="text-dark font-weight-bolder">Ponto:  </h1>
-        <h1><?php echo $dadosPonto["ds_localidade"] ?></h1>
+        <h1 class="text-dark font-weight-bolder mr-3">Ponto:  </h1>
+        <h2 class="mt-5"><?php echo $dadosPonto["ds_localidade"] ?></h2>
     </div>
     <div class="row"> 
         <div class="col-8">
@@ -91,24 +92,27 @@
             <div class="row">
                 <div class="card card-custom w-100 bgi-no-repeat bgi-size-cover gutter-b bg-white p-8" >
                     <h3 class="font-weight-bolder">Aluguel:</h3>
-                    <table>
+                    <table class="table">
                         <thead>
                             <tr>
                                 <th>Cliente</th>
                                 <th>Bisemanas</th>
-                                <th>Data Final</th>
                                 <th>Data Inicial</th>
+                                <th>Data Final</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
                                 while ($dadosAlugado = $alugado->fetch())
                                 {
+                                    $dt_inicial = date('d/m/Y', strtotime($dadosAlugado["dt_inicial"]));
+                                    $dt_final = date('d/m/Y', strtotime($dadosAlugado["dt_final"]));
+
                                     echo "<tr>
                                             <td>".$dadosAlugado['ds_nome']."</td>
                                             <td>".$dadosAlugado['ds_bisemana']."</td>
-                                            <td>".$dadosAlugado['dt_final']."</td>
-                                            <td>".$dadosAlugado['dt_inicial']."</td>
+                                            <td>".$dt_inicial."</td>
+                                            <td>".$dt_final."</td>
                                         </tr>";
                                 }
                             ?>
@@ -138,19 +142,24 @@
                                                     <th>Bisemanas Disponiveis</th>
                                                     <th>Data Inicial</th>
                                                     <th>Data Final</th>
-                                                    <th>Ações</th>
+                                                    <th>Selecione</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php
                                                     while ($dados = $retorno->fetch())
                                                     {
+
+                                                        $dt_inicial = date('d/m/Y', strtotime($dados["dt_inicial"]));
+                                                        $dt_final = date('d/m/Y', strtotime($dados["dt_final"]));
+
+
                                                         echo "<tr>
                                                                 <td>".$dados['id_bisemana']."</td>
                                                                 <td>".$dados['ds_bisemana']."</td>
-                                                                <td>".$dados['dt_inicial']."</td>
-                                                                <td>".$dados['dt_final']."</td>
-                                                                <td><input name='bisemana' id='bisemana' value='".$dados['id_bisemana']."' type='checkbox'></td>
+                                                                <td>".$dt_inicial."</td>
+                                                                <td>".$dt_inicial."</td>
+                                                                <td><input name='bisemana[]' id='bisemana' value='".$dados['id_bisemana']."' type='checkbox'></td>
                                                             </tr>";
                                                     }
                                                 ?>
@@ -179,83 +188,107 @@
             </div>
         </div>
     </div>
-    <script src="assets/js/pages/features/calendar/background-events.js"></script>
     <script src="./assets/js/datatables.bundle.js" type="text/javascript"></script>
     <script src="./assets/js/appPonto/ver_ponto.js" type="text/javascript"></script>
     <script type="text/javascript">
         var KTCalendarBasic = function() {
 
-        return {
-            //main function to initiate the module
-            init: function() { 
-                var todayDate = moment().startOf('day');
-                var YM = todayDate.format('YYYY-MM');
-                var YESTERDAY = todayDate.clone().subtract(1, 'day').format('YYYY-MM-DD');
-                var TODAY = todayDate.format('YYYY-MM-DD');
-                var TOMORROW = todayDate.clone().add(1, 'day').format('YYYY-MM-DD');
+            return {
+                //main function to initiate the module
+                init: function() { 
+                    var todayDate = moment().startOf('day');
+                    var YM = todayDate.format('YYYY-MM');
+                    var YESTERDAY = todayDate.clone().subtract(1, 'day').format('YYYY-MM-DD');
+                    var TODAY = todayDate.format('YYYY-MM-DD');
+                    var TOMORROW = todayDate.clone().add(1, 'day').format('YYYY-MM-DD');
 
-                var calendarEl = document.getElementById('calendario');
-                var calendar = new FullCalendar.Calendar(calendarEl, {
-                    plugins: [ 'interaction', 'dayGrid', 'timeGrid', 'list' ],
+                    var calendarEl = document.getElementById('calendario');
+                    var calendar = new FullCalendar.Calendar(calendarEl, {
+                        plugins: [ 'interaction', 'dayGrid', 'timeGrid', 'list' ],
 
-                    isRTL: KTUtil.isRTL(),
-                    header: {
-                        left: 'prev,next today',
-                        center: 'title',
-                        right: ''
-                    },
+                        isRTL: KTUtil.isRTL(),
+                        header: {
+                            left: 'prev,next today',
+                            center: 'title',
+                            right: ''
+                        },
 
-                    height: 800,
-                    contentHeight: 780,
-                    aspectRatio: 3,  // see: https://fullcalendar.io/docs/aspectRatio
+                        height: 800,
+                        contentHeight: 780,
+                        aspectRatio: 3,  // see: https://fullcalendar.io/docs/aspectRatio
 
-                    nowIndicator: true,
-                    now: TODAY + 'T09:25:00', // just for demo
+                        nowIndicator: true,
+                        now: TODAY + 'T09:25:00', // just for demo
 
-                    //defaultView: 'resourceTimeline',
-                    defaultDate: TODAY,
+                        //defaultView: 'resourceTimeline',
+                        defaultDate: TODAY,
 
-                    editable: true,
-                    eventLimit: true, // allow "more" link when too many events
-                    businessHours: true, // display business hours
-                    events: [
-                    <?php 
-                        while($dadosData = $retorno->fetch()){
-                            echo "
-                                {
-                                    start: '".$dadosData["dt_inicial"]."',
-                                    end: '".$dadosData["dt_final"]."',
-                                    rendering: 'background',
-                                    color: '#28a745' ,
-                                },";
+                        editable: true,
+                        eventLimit: true, // allow "more" link when too many events
+                        businessHours: true, // display business hours
+                        events: [
+                        <?php
 
-                        };
 
-                    ?>
-                    ],
-                    /*eventRender: function(info) {
-                        var element = $(info.el);
+                            while($dadosData = $retornoData->fetch()){
+                                
+                                
+                                /*var_export($dadosData);*/
+                                echo "
+                                    {
+                                        title: '".$dadosData["ds_nome"]."',
+                                        start: '".$dadosData["dt_inicial"]."',
+                                        end: '".$dadosData["dt_final"]."' + 'T17:30:00',
+                                        backgroundColor: '#28a745',
+                                        redering: 'background'
+                                        
+                                    },";
+                                /*if($dadosData[0]["dt_inicial"] == $dadosData["dt_inicial"]){
+                                    echo "
+                                    {
+                                        start: '".$dadosData["dt_inicial"]."',
+                                        end: '".$dadosData["dt_final"]."',
+                                        color: '#28a745' ,
+                                    },";
+                                }
+                                else{
+                                    echo "
+                                    {
+                                        start: '".$dadosData["dt_inicial"]."',
+                                        end: '".$dadosData["dt_final"]."',
+                                        color: '#FFA800' ,
+                                    },";
+                                }*/
+                                
 
-                        if (info.event.extendedProps, info.event.extendedProps.description) {
-                            if (element.hasClass('fc-day-grid-event')) {
-                                element.data('content', info.event.extendedProps.description);
-                                element.data('placement', 'top');
-                                KTApp.initPopover(element);
-                            } else if (element.hasClass('fc-time-grid-event')) {
-                                element.find('.fc-title').append('&lt;div class="fc-description"&gt;' + info.event.extendedProps.description + '&lt;/div&gt;');
-                            } else if (element.find('.fc-list-item-title').lenght !== 0) {
-                                element.find('.fc-list-item-title').append('&lt;div class="fc-description"&gt;' + info.event.extendedProps.description + '&lt;/div&gt;');
+                            };
+
+
+                        ?>
+                        ],
+                        /*eventRender: function(info) {
+                            var element = $(info.el);
+
+                            if (info.event.extendedProps, info.event.extendedProps.description) {
+                                if (element.hasClass('fc-day-grid-event')) {
+                                    element.data('content', info.event.extendedProps.description);
+                                    element.data('placement', 'top');
+                                    KTApp.initPopover(element);
+                                } else if (element.hasClass('fc-time-grid-event')) {
+                                    element.find('.fc-title').append('&lt;div class="fc-description"&gt;' + info.event.extendedProps.description + '&lt;/div&gt;');
+                                } else if (element.find('.fc-list-item-title').lenght !== 0) {
+                                    element.find('.fc-list-item-title').append('&lt;div class="fc-description"&gt;' + info.event.extendedProps.description + '&lt;/div&gt;');
+                                }
                             }
-                        }
-                    }*/
-                });
+                        }*/
+                    });
 
-                calendar.render();
-            }
-        };
+                    calendar.render();
+                }
+            };
         }();
         jQuery(document).ready(function() {
-        KTCalendarBasic.init();
+            KTCalendarBasic.init();
         });
     </script>
 </body>

@@ -14,6 +14,7 @@ $(document).ready(function() {
 					showConfirmButton: true
 				});
 				$('#modal').modal('hide');
+
 							
 			}
 			, error: function (data) {

@@ -311,7 +311,7 @@ h1, h2, h3, h4, h5, h6,
   line-height: 1.2; }
 
 h1, .h1 {
-  font-size: 2rem; }
+  font-size: 40px; }
   @media (max-width: 1200px) {
     h1, .h1 {
       font-size: calc(1.325rem + 0.9vw) ; } }

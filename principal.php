@@ -3,10 +3,12 @@
 	ini_set('display_startup_erros',1);
 	error_reporting(E_ALL);
 	require_once("Classes/Principal.php");
+	require_once("Classes/Ponto.php");
 
+    $ponto = new Ponto(); 
     $Principal = new Principal();
+    $retornoPonto = $ponto->listarMelhoresPonto($_POST);
     $listarCliente = $Principal->listarOptionsCliente();
-    $retorno = $Principal->listarPonto($_POST);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -54,6 +56,77 @@
             <div class="my-8">
                 <h1 class="text-dark font-weight-bolder">Dashboard</h1>
             </div>
+            <div class="row">
+                <div class="col-6">
+                    <div id="chart_1"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card card-custom bgi-no-repeat bgi-size-cover gutter-b bg-white " >
+                        <div class="card-body">
+                            <h3 class="font-weight-bolder">
+                                Meus pontos
+                            </h3>
+                            <table class="table table-hover" id="table_ponto">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Local</th>
+                                        <th>Lat/long</th>
+                                        <th>Tipo</th>
+                                        <th>Status</th>
+                                        <th>Ações</th>
+                                    </tr>
+
+                                </thead>
+                                <tbody>
+                                    <?php
+                                        while ($dados = $retornoPonto->fetch())
+                                        {
+                                            /*$id_status = $dados['id_status'];
+                                            switch($id_status){
+                                                case 1:
+                                                    $status = "<span class='label label-xl label-dot label-success'>";
+                                                    break;
+                                                case 2:
+                                                    $status = "<span class='label label-xl label-dot label-warning'>";
+                                                    break;
+                                                case 3:
+                                                    $status = "<span class='label label-xl label-dot label-danger'>";
+                                                    break;
+                                            };*/
+                                            $hoje = date('Y-m-d');
+                                            
+                                            if($hoje >= $dados["dt_inicial"] && $dados["dt_final"] >= $hoje){
+                                                $status = "<span class='label label-xl label-dot label-danger'>";
+                                            }
+                                            if($hoje < $dados["dt_inicial"]){
+                                                $status = "<span class='label label-xl label-dot label-warning'>";
+                                            }
+                                            if(empty($dados["dt_final"]) && empty($dados["dt_inicial"])){
+                                                $status = "<span class='label label-xl label-dot label-success'>";
+                                            }
+                                            
+                                            echo "<tr>
+                                                    <td>".$dados['id_ponto']."</td>
+                                                    <td>".$dados['ds_localidade']."</td>
+                                                    <td>".$dados['nu_localidade']."</td>
+                                                    <td>".$dados['ds_tipo']."</td>
+                                                    <td class='d-flex'>".$status."</td>
+                                                    <td nowrap></td>
+                                                </tr>";
+                                        }
+                                    ?>
+                                    
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
         </div>       
     </div>
     <script>var HOST_URL = "https://preview.keenthemes.com/metronic/theme/html/tools/preview";</script>
@@ -78,8 +151,10 @@
     <!--begin::Page Scripts(used by this page)-->
     <script src="assets/js/pages/widgets.js"></script>
     <script src="assets/js/custom.js"></script>
+    <script src="assets/js/principal.js"></script>
     <script src="//maps.google.com/maps/api/js?key=AIzaSyBTGnKT7dt597vo9QgeQ7BFhvSRP4eiMSM&callback=initialize"></script>
     <script src="assets/plugins/custom/gmaps/gmaps.js"></script>
+    <script src="./assets/js/appPonto/lista_ponto.js" type="text/javascript"></script>
     <!--end::Page Scripts-->
 </body>
 

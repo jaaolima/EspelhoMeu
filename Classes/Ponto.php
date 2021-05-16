@@ -36,13 +36,44 @@
 			try{
 				$con = Conecta::criarConexao();
 				
-				$select = "SELECT p.id_ponto, ds_localidade, nu_localidade, t.ds_tipo, b.dt_inicial, b.dt_final
+				$select = "SELECT p.id_ponto, ds_localidade, nu_localidade, t.ds_tipo, min(b.dt_inicial) as dt_inicial, b.dt_final, b.id_bisemana
 							FROM tb_ponto p
 							inner join tb_tipo t on t.id_tipo=p.id_tipo 
 							left join tb_alugado a on p.id_ponto=a.id_ponto
 							left join tb_bisemana b on a.id_bisemana=b.id_bisemana
-							where b.dt_final > :hoje
-							group by p.id_ponto";
+							where (b.dt_final > :hoje or not exists(select a.id_ponto from tb_alugado a where a.id_ponto=p.id_ponto ))
+							group by p.id_ponto
+							";
+							
+				$stmt = $con->prepare($select); 
+				$params = array(':hoje' => date('Y-m-d'));
+				
+				$stmt->execute($params);
+
+				return $stmt;
+				
+					 
+			}
+			catch(exception $e)
+			{
+				header('HTTP/1.1 500 Internal Server Error');
+    			print "ERRO:".$e->getMessage();		
+			}
+		}
+
+		public function listarMelhoresPonto(array $dados) 
+		{
+			try{
+				$con = Conecta::criarConexao();
+				
+				$select =	"SELECT p.id_ponto, ds_localidade, nu_localidade, t.ds_tipo, min(b.dt_inicial) as dt_inicial, b.dt_final, b.id_bisemana
+							FROM tb_ponto p
+							inner join tb_tipo t on t.id_tipo=p.id_tipo 
+							left join tb_alugado a on p.id_ponto=a.id_ponto
+							left join tb_bisemana b on a.id_bisemana=b.id_bisemana
+							where (b.dt_final > :hoje or not exists(select a.id_ponto from tb_alugado a where a.id_ponto=p.id_ponto ))
+							group by p.id_ponto
+							";
 							
 				$stmt = $con->prepare($select); 
 				$params = array(':hoje' => date('Y-m-d'));
@@ -148,30 +179,64 @@
 
 			$id_cliente	    = $_POST['id_cliente'];
 			$id_ponto	    = $_POST['id_ponto'];
-			$id_bisemana	= $_POST['bisemana'];
+			if(isset($_POST['bisemana'])){
+				$listaCheckbox = $_POST['bisemana'];
 
-			
-			try{
-				$con = Conecta::criarConexao();
-				$insert = "INSERT into tb_alugado (id_cliente, id_ponto,  id_bisemana)
-							VALUES (:id_cliente, :id_ponto, :id_bisemana)";
-				
-				$stmt = $con->prepare($insert);
-				
-				$params = array(':id_cliente' => $id_cliente,
-								':id_ponto' => $id_ponto,
-								':id_bisemana' => $id_bisemana);
-                                
-				$stmt->execute($params);
-				
-				echo "Dados gravados com sucesso!"; 
-				
+				$id_bisemana= '';
+
+				for ($i=0; $i < count($listaCheckbox); $i++) { 
+					
+					$id_bisemana = $listaCheckbox[$i];
+
+					try{
+						$con = Conecta::criarConexao();
+						$insert = "INSERT into tb_alugado (id_cliente, id_ponto,  id_bisemana)
+									VALUES (:id_cliente, :id_ponto, :id_bisemana)";
+						
+						$stmt = $con->prepare($insert);
+						
+						$params = array(':id_cliente' => $id_cliente,
+										':id_ponto' => $id_ponto,
+										':id_bisemana' => $id_bisemana);
+										
+						$stmt->execute($params);
+						
+						 
+						
+					}
+					catch(exception $e) 
+					{
+						header('HTTP/1.1 500 Internal Server Error');
+						print "ERRO:".$e->getMessage();		
+					} 	
+				}
+				echo "Dados gravados com sucesso!";
 			}
-			catch(exception $e) 
-			{
-				header('HTTP/1.1 500 Internal Server Error');
-    			print "ERRO:".$e->getMessage();		
-			} 
+			else{
+				$id_bisemana = NULL;
+				try{
+					$con = Conecta::criarConexao();
+					$insert = "INSERT into tb_alugado (id_cliente, id_ponto,  id_bisemana)
+								VALUES (:id_cliente, :id_ponto, :id_bisemana)";
+					
+					$stmt = $con->prepare($insert);
+					
+					$params = array(':id_cliente' => $id_cliente,
+									':id_ponto' => $id_ponto,
+									':id_bisemana' => $id_bisemana);
+									
+					$stmt->execute($params);
+					
+					echo "Dados gravados com sucesso!"; 
+					
+				}
+				catch(exception $e) 
+				{
+					header('HTTP/1.1 500 Internal Server Error');
+					print "ERRO:".$e->getMessage();		
+				} 
+			};
+
         }
 		public function listarAlugado($id_ponto) 
 		{
