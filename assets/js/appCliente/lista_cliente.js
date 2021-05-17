@@ -28,6 +28,14 @@ $("#nu_telefone").inputmask({
 	"mask": "(99)99999-9999",
 	autoUnmask: false,
 });
+$("#nu_cnpj").inputmask({
+	"mask": "99.999.999/9999-99",
+	autoUnmask: false,
+});
+$("#nu_cep").inputmask({
+	"mask": "99.999-999",
+	autoUnmask: false,
+});
 
 function validarCliente()
 {
@@ -66,6 +74,54 @@ function validarCliente()
 	{
 		$("#nu_telefone").removeClass("is-invalid");	
 		$("#nu_telefone").addClass("is-valid");
+	}
+	if($("#ds_endereco").val() == "")
+	{
+		$("#ds_endereco").focus();
+		//swal.fire("Erro", "Preencha a descrição", "error");
+		$("#ds_endereco").addClass("is-invalid");
+		return false;	
+	}
+	else
+	{
+		$("#ds_endereco").removeClass("is-invalid");	
+		$("#ds_endereco").addClass("is-valid");
+	}
+	if($("#nu_cnpj").val() == "")
+	{
+		$("#nu_cnpj").focus();
+		//swal.fire("Erro", "Preencha a descrição", "error");
+		$("#nu_cnpj").addClass("is-invalid");
+		return false;	
+	}
+	else
+	{
+		$("#nu_cnpj").removeClass("is-invalid");	
+		$("#nu_cnpj").addClass("is-valid");
+	}
+	if($("#nu_cep").val() == "")
+	{
+		$("#nu_cep").focus();
+		//swal.fire("Erro", "Preencha a descrição", "error");
+		$("#nu_cep").addClass("is-invalid");
+		return false;	
+	}
+	else
+	{
+		$("#nu_cep").removeClass("is-invalid");	
+		$("#nu_cep").addClass("is-valid");
+	}
+	if($("#ds_email").val() == "")
+	{
+		$("#ds_email").focus();
+		//swal.fire("Erro", "Preencha a descrição", "error");
+		$("#ds_email").addClass("is-invalid");
+		return false;	
+	}
+	else
+	{
+		$("#ds_email").removeClass("is-invalid");	
+		$("#ds_email").addClass("is-valid");
 	}
 
 	return true;

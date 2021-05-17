@@ -24,20 +24,47 @@
         <div class="col-6">
             <div class="card card-custom bgi-no-repeat bgi-size-cover gutter-b bg-white p-8" >
                 <h3 class="font-weight-bolder">Detalhes:</h3>
-                <div class="d-block mt-2">
-                    <div class="d-flex">
-                        <p>Nome: </p>
-                        <span class="ml-2 font-weight-bolder"><?php echo $dados["ds_nome"] ?></span>
+                <div class="row">
+                    <div class="d-block mt-2 col-6">
+                        <div class="d-flex">
+                            <p>Responsável: </p>
+                            <span class="ml-2 font-weight-bolder"><?php echo $dados["ds_nome"] ?></span>
+                        </div>
+                        <div class="d-flex">
+                            <p>Empresa: </p>
+                            <span class=" ml-2 font-weight-bolder"><?php  echo $dados["ds_empresa"] ?></span>
+                        </div>
+                        <div class="d-flex">
+                            <p>CNPJ: </p>
+                            <span class=" ml-2 font-weight-bolder"><?php  echo $dados["nu_cnpj"] ?></span>
+                        </div>
+                        <div class="d-flex">
+                            <p>Contato: </p>
+                            <span class="ml-2 font-weight-bolder"><?php echo $dados["nu_telefone"] ?></span>
+                        </div>
                     </div>
-                    <div class="d-flex">
-                        <p>Empresa: </p>
-                        <span class=" ml-2 font-weight-bolder"><?php  echo $dados["ds_empresa"] ?></span>
+                    <div class="d-block mt-2 col-6">
+                        
+                        <div class="d-flex">
+                            <p>Email: </p>
+                            <span class="ml-2 font-weight-bolder"><?php echo $dados["ds_email"] ?></span>
+                        </div>
+                        <div class="d-flex">
+                            <p>CEP: </p>
+                            <span class="ml-2 font-weight-bolder"><?php echo $dados["nu_cep"] ?></span>
+                        </div>
+                        <div class="d-flex">
+                            <p>Endereço: </p>
+                            <span class=" ml-2 font-weight-bolder"><?php  echo $dados["ds_endereco"] ?></span>
+                        </div>
+                        <div class="d-flex">
+                            <p>Complemento: </p>
+                            <span class=" ml-2 font-weight-bolder"><?php  echo $dados["ds_complemento"] ?></span>
+                        </div>
                     </div>
-                    <div class="d-flex">
-                        <p>Contato: </p>
-                        <span class=" ml-2 font-weight-bolder"><?php  echo $dados["nu_telefone"] ?></span>
-                    </div>
+
                 </div>
+               
                 <div class="text-right">
                     <button class="btn btn-primary" data-toggle="modal" data-target="#modal">Editar</button>
                 </div>
@@ -48,20 +75,46 @@
                                 <h5 class="modal-title">Editar Cliente: <?php echo $dados["ds_nome"] ?></h5>
                             </div>
                             <div class="modal-body">
-                                <form id="form_cliente">
-                                    <div class="form-group col-md-3">
-                                        <label>Nome: <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="ds_nome" name="ds_nome" value="<?php echo $dados['ds_nome']?>"/>
-                                   </div>
-                                    <div class="form-group col-md-3">
-                                        <label>Empresa: <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="ds_empresa" name="ds_empresa" value="<?php echo $dados['ds_empresa']?>"/>
+                                 <form id="form_cliente">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label>Responsável: <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="ds_nome" name="ds_nome" value="<?php echo $dados['ds_nome']?>"/>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label>Empresa: <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="ds_empresa" name="ds_empresa" value="<?php echo $dados['ds_empresa']?>"/>
+                                        </div>
                                     </div>
-                                    <div class="form-group col-md-3">
-                                        <label>Contato: <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="nu_telefone" name="nu_telefone" value="<?php echo $dados['nu_telefone']?>"/>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label>CNPJ: <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="nu_cnpj" name="nu_cnpj" value="<?php echo $dados['nu_cnpj']?>"/>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label>email: <span class="text-danger">*</span></label>
+                                            <input type="email" class="form-control" id="ds_email" name="ds_email" value="<?php echo $dados['ds_email']?>"/>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label>Contato: <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="nu_telefone" name="nu_telefone" value="<?php echo $dados['nu_telefone']?>"/>
+                                        </div>
                                     </div>
-                                    <input type="hidden" id="id_cliente" name="id_cliente" value="<?php echo $id_cliente?>">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label>CEP: <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="nu_cep" name="nu_cep" value="<?php echo $dados['nu_cep']?>"/>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label>Endereço: <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="ds_endereco" name="ds_endereco" value="<?php echo $dados['ds_endereco']?>"/>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label>Complemento:</label>
+                                            <input type="text" class="form-control" id="ds_complemento" name="ds_complemento" value="<?php echo $dados['ds_complemento']?>"/>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" class="form-control" id="id_cliente" name="id_cliente" value="<?php echo $dados['id_cliente']?>"/>
                                 </form>
                             </div>
                             <div class="modal-footer">
@@ -90,6 +143,7 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Local</th>
+                                <th>Tipo</th>
                                 <th>Data Inicial</th>
                                 <th>Data Final</th>
                                 <th>Lat/long</th>
@@ -107,6 +161,7 @@
                                     echo "<tr>
                                             <td>".$dados['id_ponto']."</td>
                                             <td>".$dados['ds_localidade']."</td>
+                                            <td>".$dados['ds_tipo']."</td>
                                             <td>".$dt_inicial."</td>
                                             <td>".$dt_final."</td>
                                             <td>".$dados['nu_localidade']."</td>

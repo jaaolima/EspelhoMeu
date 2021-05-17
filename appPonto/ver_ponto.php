@@ -95,7 +95,7 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Cliente</th>
+                                <th>Empresa</th>
                                 <th>Bisemanas</th>
                                 <th>Data Inicial</th>
                                 <th>Data Final</th>
@@ -109,7 +109,7 @@
                                     $dt_final = date('d/m/Y', strtotime($dadosAlugado["dt_final"]));
 
                                     echo "<tr>
-                                            <td>".$dadosAlugado['ds_nome']."</td>
+                                            <td>".$dadosAlugado['ds_empresa']."</td>
                                             <td>".$dadosAlugado['ds_bisemana']."</td>
                                             <td>".$dt_inicial."</td>
                                             <td>".$dt_final."</td>
@@ -242,7 +242,7 @@
                                     /*var_export($dadosData);*/
                                     echo "
                                         {
-                                            title: '".$dadosData["ds_nome"]."',
+                                            title: '".$dadosData["ds_empresa"]."',
                                             start: '".$dadosData["dt_inicial"]."',
                                             end: '".$dadosData["dt_final"]."' + 'T17:30:00',
                                             backgroundColor: '#28a745',

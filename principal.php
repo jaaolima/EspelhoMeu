@@ -89,28 +89,17 @@
                                     <?php
                                         while ($dados = $retornoPonto->fetch())
                                         {
-                                            /*$id_status = $dados['id_status'];
-                                            switch($id_status){
-                                                case 1:
-                                                    $status = "<span class='label label-xl label-dot label-success'>";
-                                                    break;
-                                                case 2:
-                                                    $status = "<span class='label label-xl label-dot label-warning'>";
-                                                    break;
-                                                case 3:
-                                                    $status = "<span class='label label-xl label-dot label-danger'>";
-                                                    break;
-                                            };*/
+    
                                             $hoje = date('Y-m-d');
                                             
                                             if($hoje >= $dados["dt_inicial"] && $dados["dt_final"] >= $hoje){
-                                                $status = "<span class='label label-xl label-dot label-danger'>";
+                                                $status = "<span class='label label-xl label-dot label-danger mr-2 mt-1'></span><p>Indisponível agora</p>";
                                             }
                                             if($hoje < $dados["dt_inicial"]){
-                                                $status = "<span class='label label-xl label-dot label-warning'>";
+                                                $status = "<span class='label label-xl label-dot label-warning mr-2 mt-1'></span><p>Reservado depois</p>";
                                             }
                                             if(empty($dados["dt_final"]) && empty($dados["dt_inicial"])){
-                                                $status = "<span class='label label-xl label-dot label-success'>";
+                                                $status = "<span class='label label-xl label-dot label-success mr-2 mt-1'></span><p>Disponível agora</p>";
                                             }
                                             
                                             echo "<tr>
@@ -155,7 +144,6 @@
     <!--end::Page Vendors-->
     <!--begin::Page Scripts(used by this page)-->
     <script src="assets/js/pages/widgets.js"></script>
-    <script src="assets/js/custom.js"></script>
     <script src="assets/js/principal.js"></script>
     <script src="//maps.google.com/maps/api/js?key=AIzaSyBTGnKT7dt597vo9QgeQ7BFhvSRP4eiMSM&callback=initialize"></script>
     <script src="assets/plugins/custom/gmaps/gmaps.js"></script>

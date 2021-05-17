@@ -25,17 +25,43 @@
                     </div>
                     <div class="modal-body">
                         <form id="form_cliente">
-                            <div class="form-group col-md-3">
-                                <label>Nome: <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="ds_nome" name="ds_nome" />
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label>Responsável: <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="ds_nome" name="ds_nome" />
+                                </div>
+                                <div class="col-md-3">
+                                    <label>Empresa: <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="ds_empresa" name="ds_empresa" />
+                                </div>
                             </div>
-                            <div class="form-group col-md-3">
-                                <label>Empresa: <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="ds_empresa" name="ds_empresa" />
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label>CNPJ: <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="nu_cnpj" name="nu_cnpj" />
+                                </div>
+                                <div class="col-md-3">
+                                    <label>email: <span class="text-danger">*</span></label>
+                                    <input type="email" class="form-control" id="ds_email" name="ds_email" />
+                                </div>
+                                <div class="col-md-3">
+                                    <label>Contato: <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="nu_telefone" name="nu_telefone" />
+                                </div>
                             </div>
-                            <div class="form-group col-md-3">
-                                <label>Contato: <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="nu_telefone" name="nu_telefone" />
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label>CEP: <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="nu_cep" name="nu_cep" />
+                                </div>
+                                <div class="col-md-3">
+                                    <label>Endereço: <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="ds_endereco" name="ds_endereco" />
+                                </div>
+                                <div class="col-md-3">
+                                    <label>Complemento:</label>
+                                    <input type="text" class="form-control" id="ds_complemento" name="ds_complemento" />
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -53,8 +79,9 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Nome</th>
+                                <th>Responsável</th>
                                 <th>Empresa</th>
+                                <th>E-mail</th>
                                 <th>Ações</th>
                             </tr>
 
@@ -67,6 +94,7 @@
                                             <td>".$dados['id_cliente']."</td>
                                             <td>".$dados['ds_nome']."</td>
                                             <td>".$dados['ds_empresa']."</td>
+                                            <td>".$dados['ds_email']."</td>
                                             <td nowrap></td>
                                         </tr>";
                                 }

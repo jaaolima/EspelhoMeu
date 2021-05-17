@@ -31,17 +31,16 @@
     			print "ERRO:".$e->getMessage();		
 			} 
         }
-		public function listarPonto(array $dados) 
+		public function listarOutdoor(array $dados) 
 		{
 			try{
 				$con = Conecta::criarConexao();
 				
-				$select = "SELECT p.id_ponto, ds_localidade, nu_localidade, t.ds_tipo, min(b.dt_inicial) as dt_inicial, b.dt_final, b.id_bisemana
+				$select = "SELECT p.id_ponto, ds_localidade, nu_localidade, id_tipo, min(b.dt_inicial) as dt_inicial, b.dt_final, b.id_bisemana
 							FROM tb_ponto p
-							inner join tb_tipo t on t.id_tipo=p.id_tipo 
 							left join tb_alugado a on p.id_ponto=a.id_ponto
 							left join tb_bisemana b on a.id_bisemana=b.id_bisemana
-							where (b.dt_final > :hoje or not exists(select a.id_ponto from tb_alugado a where a.id_ponto=p.id_ponto ))
+							where (b.dt_final > :hoje or not exists(select a.id_ponto from tb_alugado a where a.id_ponto=p.id_ponto ) ) and id_tipo = 1 
 							group by p.id_ponto
 							";
 							
@@ -60,6 +59,35 @@
     			print "ERRO:".$e->getMessage();		
 			}
 		}
+		public function listarFront(array $dados) 
+		{
+			try{
+				$con = Conecta::criarConexao();
+				
+				$select = "SELECT p.id_ponto, ds_localidade, nu_localidade, id_tipo, min(b.dt_inicial) as dt_inicial, b.dt_final, b.id_bisemana
+							FROM tb_ponto p
+							left join tb_alugado a on p.id_ponto=a.id_ponto
+							left join tb_bisemana b on a.id_bisemana=b.id_bisemana
+							where (b.dt_final > :hoje or not exists(select a.id_ponto from tb_alugado a where a.id_ponto=p.id_ponto ) ) and id_tipo = 2
+							group by p.id_ponto
+							";
+							
+				$stmt = $con->prepare($select); 
+				$params = array(':hoje' => date('Y-m-d'));
+				
+				$stmt->execute($params);
+
+				return $stmt;
+				
+					 
+			}
+			catch(exception $e)
+			{
+				header('HTTP/1.1 500 Internal Server Error');
+    			print "ERRO:".$e->getMessage();		
+			}
+		}
+
 
 		public function listarMelhoresPonto(array $dados) 
 		{
@@ -95,9 +123,10 @@
 			try{
 				$con = Conecta::criarConexao();
 				
-				$select = "SELECT p.id_ponto, ds_localidade, nu_localidade, dt_inicial, dt_final
+				$select = "SELECT p.id_ponto, ds_localidade, nu_localidade, dt_inicial, dt_final, ds_tipo
 							FROM tb_ponto p
 							inner join tb_alugado a on p.id_ponto=a.id_ponto 
+							inner join tb_tipo t on p.id_tipo=t.id_tipo 
 							inner join tb_bisemana b on a.id_bisemana=b.id_bisemana
 							where a.id_cliente = :id_cliente";
 				
@@ -243,7 +272,7 @@
 			try{
 				$con = Conecta::criarConexao();
 				
-				$select = "SELECT ds_nome, ds_bisemana, b.dt_final, b.dt_inicial
+				$select = "SELECT ds_empresa, ds_bisemana, b.dt_final, b.dt_inicial
 							FROM tb_alugado a
 							inner join tb_cliente c on a.id_cliente=c.id_cliente
 							inner join tb_bisemana b on a.id_bisemana=b.id_bisemana
