@@ -191,11 +191,11 @@
     <script src="./assets/js/datatables.bundle.js" type="text/javascript"></script>
     <script src="./assets/js/appPonto/ver_ponto.js" type="text/javascript"></script>
     <script type="text/javascript">
-        var KTCalendarBasic = function() {
+        var KTCalendarBackgroundEvents = function() {
 
             return {
                 //main function to initiate the module
-                init: function() { 
+                init: function() {
                     var todayDate = moment().startOf('day');
                     var YM = todayDate.format('YYYY-MM');
                     var YESTERDAY = todayDate.clone().subtract(1, 'day').format('YYYY-MM-DD');
@@ -210,7 +210,6 @@
                         header: {
                             left: 'prev,next today',
                             center: 'title',
-                            right: ''
                         },
 
                         height: 800,
@@ -220,76 +219,85 @@
                         nowIndicator: true,
                         now: TODAY + 'T09:25:00', // just for demo
 
-                        //defaultView: 'resourceTimeline',
+                        views: {
+                            dayGridMonth: { buttonText: 'month' },
+                            timeGridWeek: { buttonText: 'week' },
+                            timeGridDay: { buttonText: 'day' }
+                        },
+
+                        defaultView: 'dayGridMonth',
                         defaultDate: TODAY,
 
                         editable: true,
                         eventLimit: true, // allow "more" link when too many events
+                        navLinks: true,
                         businessHours: true, // display business hours
                         events: [
-                        <?php
+                            <?php
 
 
-                            while($dadosData = $retornoData->fetch()){
-                                
-                                
-                                /*var_export($dadosData);*/
-                                echo "
-                                    {
-                                        title: '".$dadosData["ds_nome"]."',
-                                        start: '".$dadosData["dt_inicial"]."',
-                                        end: '".$dadosData["dt_final"]."' + 'T17:30:00',
-                                        backgroundColor: '#28a745',
-                                        redering: 'background'
-                                        
-                                    },";
-                                /*if($dadosData[0]["dt_inicial"] == $dadosData["dt_inicial"]){
+                                while($dadosData = $retornoData->fetch()){
+                                    
+                                    
+                                    /*var_export($dadosData);*/
                                     echo "
-                                    {
-                                        start: '".$dadosData["dt_inicial"]."',
-                                        end: '".$dadosData["dt_final"]."',
-                                        color: '#28a745' ,
-                                    },";
-                                }
-                                else{
-                                    echo "
-                                    {
-                                        start: '".$dadosData["dt_inicial"]."',
-                                        end: '".$dadosData["dt_final"]."',
-                                        color: '#FFA800' ,
-                                    },";
-                                }*/
-                                
+                                        {
+                                            title: '".$dadosData["ds_nome"]."',
+                                            start: '".$dadosData["dt_inicial"]."',
+                                            end: '".$dadosData["dt_final"]."' + 'T17:30:00',
+                                            backgroundColor: '#28a745',
+                                            redering: 'background'
+                                            
+                                        },";
+                                    /*if($dadosData[0]["dt_inicial"] == $dadosData["dt_inicial"]){
+                                        echo "
+                                        {
+                                            start: '".$dadosData["dt_inicial"]."',
+                                            end: '".$dadosData["dt_final"]."',
+                                            color: '#28a745' ,
+                                        },";
+                                    }
+                                    else{
+                                        echo "
+                                        {
+                                            start: '".$dadosData["dt_inicial"]."',
+                                            end: '".$dadosData["dt_final"]."',
+                                            color: '#FFA800' ,
+                                        },";
+                                    }*/
+                                    
 
-                            };
+                                };
 
 
-                        ?>
+                            ?>
                         ],
-                        /*eventRender: function(info) {
+
+                        eventRender: function(info) {
                             var element = $(info.el);
 
-                            if (info.event.extendedProps, info.event.extendedProps.description) {
+                            if (info.event.extendedProps && info.event.extendedProps.description) {
                                 if (element.hasClass('fc-day-grid-event')) {
                                     element.data('content', info.event.extendedProps.description);
                                     element.data('placement', 'top');
                                     KTApp.initPopover(element);
                                 } else if (element.hasClass('fc-time-grid-event')) {
-                                    element.find('.fc-title').append('&lt;div class="fc-description"&gt;' + info.event.extendedProps.description + '&lt;/div&gt;');
+                                    element.find('.fc-title').append('<div class="fc-description">' + info.event.extendedProps.description + '</div>');
                                 } else if (element.find('.fc-list-item-title').lenght !== 0) {
-                                    element.find('.fc-list-item-title').append('&lt;div class="fc-description"&gt;' + info.event.extendedProps.description + '&lt;/div&gt;');
+                                    element.find('.fc-list-item-title').append('<div class="fc-description">' + info.event.extendedProps.description + '</div>');
                                 }
                             }
-                        }*/
+                        }
                     });
 
                     calendar.render();
                 }
             };
-        }();
-        jQuery(document).ready(function() {
-            KTCalendarBasic.init();
-        });
+            }();
+
+            jQuery(document).ready(function() {
+            KTCalendarBackgroundEvents.init();
+            });
     </script>
 </body>
 

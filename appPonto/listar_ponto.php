@@ -69,18 +69,6 @@
                             <?php
                                 while ($dados = $retorno->fetch())
                                 {
-                                    /*$id_status = $dados['id_status'];
-                                    switch($id_status){
-                                        case 1:
-                                            $status = "<span class='label label-xl label-dot label-success'>";
-                                            break;
-                                        case 2:
-                                            $status = "<span class='label label-xl label-dot label-warning'>";
-                                            break;
-                                        case 3:
-                                            $status = "<span class='label label-xl label-dot label-danger'>";
-                                            break;
-                                    };*/
                                     $hoje = date('Y-m-d');
                                     
                                     if($hoje >= $dados["dt_inicial"] && $dados["dt_final"] >= $hoje){

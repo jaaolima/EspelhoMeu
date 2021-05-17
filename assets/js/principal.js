@@ -70,13 +70,13 @@ function redirectTo(url, successCallback){
 	});
 
 }
-const primary = '#6993FF';
+/*const primary = '#6993FF';
 const success = '#1BC5BD';
 const info = '#8950FC';
 const warning = '#FFA800';
 const danger = '#F64E60';
 var KTApexChartsDemo = function () {
-	// Private functions
+	// Private functions 
 	var _demo1 = function () {
 		const apexChart = "#chart_1";
 		var options = {
@@ -124,7 +124,7 @@ var KTApexChartsDemo = function () {
 
 jQuery(document).ready(function () {
 	KTApexChartsDemo.init();
-});
+});*/
 
 
 

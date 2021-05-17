@@ -5,6 +5,11 @@
 	require_once("Classes/Principal.php");
 	require_once("Classes/Ponto.php");
 
+    /*if ( $_SESSION['autenticado'] !=='validado') {
+		header("location: index.php");
+		exit();
+	}*/
+
     $ponto = new Ponto(); 
     $Principal = new Principal();
     $retornoPonto = $ponto->listarMelhoresPonto($_POST);
@@ -154,7 +159,6 @@
     <script src="assets/js/principal.js"></script>
     <script src="//maps.google.com/maps/api/js?key=AIzaSyBTGnKT7dt597vo9QgeQ7BFhvSRP4eiMSM&callback=initialize"></script>
     <script src="assets/plugins/custom/gmaps/gmaps.js"></script>
-    <script src="./assets/js/appPonto/lista_ponto.js" type="text/javascript"></script>
     <!--end::Page Scripts-->
 </body>
 
