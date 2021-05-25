@@ -2,9 +2,8 @@
 	error_reporting(E_ALL);
 	require_once("../Classes/Usuario.php");
 	
-	/*session_start();
+	session_start();
 	$usuario 		= new Usuario();
-	
 	$ds_usuario  	= $_REQUEST['ds_usuario'];
 	$ds_senha  		= $_REQUEST['ds_senha'];
  
@@ -23,6 +22,6 @@
 		$_SESSION['ds_usuario']			= $login['ds_usuario'];
 		$_SESSION['id_perfil']			= $login['id_perfil'];
 		echo "Usuário autenticado";	
-	}*/
+	}
 	
 ?>

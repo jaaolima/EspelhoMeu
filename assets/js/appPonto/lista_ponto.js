@@ -124,7 +124,7 @@ var DatatablesBasicBasic = function() {
 					render: function(data, type, full, meta) {
 						return `
                         
-                         <a href="appPonto/ver_ponto.php?id_ponto=`+full[0]+`"" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Visualizar Cadastro">
+                         <a href="appPonto/ver_ponto.php?id_ponto=`+full[0]+`&id_tipo=1"" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Visualizar Cadastro">
                           <i class="la la-edit"></i>
                         </a>
                         `;
@@ -188,7 +188,7 @@ var DatatablesBasicBasic = function() {
 					render: function(data, type, full, meta) {
 						return `
                         
-                         <a href="appPonto/ver_ponto.php?id_ponto=`+full[0]+`"" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Visualizar Cadastro">
+                         <a href="appPonto/ver_ponto.php?id_ponto=`+full[0]+`&id_tipo=2"" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Visualizar Cadastro">
                           <i class="la la-edit"></i>
                         </a>
                         `;
@@ -203,7 +203,7 @@ var DatatablesBasicBasic = function() {
 			],
 		});
 	
-
+ 
 		table.on('change', 'tbody tr .m-checkbox', function() {
 			$(this).parents('tr').toggleClass('active');
 		});	

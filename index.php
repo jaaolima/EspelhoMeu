@@ -1,21 +1,21 @@
 
 <?php
 
-/*session_start();
+session_start();
 if ( $_SESSION['autenticado'] ==='validado') {
 	header("location: principal.php");
 	exit();
-}*/
+}
 
 ?>
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 	<!--begin::Head-->
     <head><base href="../../../../">
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Universo</title>
+        <title>Espelho Meu | Login</title>
         <link rel="canonical" href="https://keenthemes.com/metronic" />
         <!--begin::Fonts-->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
@@ -50,16 +50,19 @@ if ( $_SESSION['autenticado'] ==='validado') {
 						</div>
 						<!--end::Login Header-->
 						<!--begin::Login Sign in form-->
-						<div class="login-signin">
+						<div class="login-signin" style="min-width: 400px;">
 							<div class="mb-20">
-								<h3>Entrar</h3>
+								<h3>Login</h3>
 							</div>
 							<form class="form" id="kt_login_signin_form">
 								<div class="form-group mb-5">
 									<input class="form-control h-auto form-control-solid py-4 px-8" type="text" placeholder="Usuário" name="ds_usuario" autocomplete="off" />
 								</div>
 								<div class="form-group mb-5">
-									<input class="form-control h-auto form-control-solid py-4 px-8" type="password" placeholder="Senha" name="nu_senha" />
+									<input class="form-control h-auto form-control-solid py-4 px-8" type="password" placeholder="Senha" name="nu_senha"  />
+								</div>
+                                <div class="form-group d-flex flex-wrap flex-center mt-10">
+									<button class="btn btn-primary font-weight-bold px-9 py-4 my-3 mx-2" id="entrar">Entrar</button>
 								</div>
 							</form>
 						</div>
@@ -89,14 +92,8 @@ if ( $_SESSION['autenticado'] ==='validado') {
         <script src="assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
         <!--end::Page Vendors-->
         <!--begin::Page Scripts(used by this page)-->
-        <script src="assets/js/pages/widgets.js"></script>
-        <script src="assets/js/custom.js"></script>
-        <script src="assets/js/principal.js"></script>
-        <script src="//maps.google.com/maps/api/js?key=AIzaSyBTGnKT7dt597vo9QgeQ7BFhvSRP4eiMSM&callback=initialize"></script>
-        <script src="assets/plugins/custom/gmaps/gmaps.js"></script>
-        <script src="./assets/js/appPonto/lista_ponto.js" type="text/javascript"></script>
-        <script src="assets/js/appLogin/valida_login.js"></script>
-		<script src="assets/js/pages/custom/login/login-general.js"></script>
+		<script src="assets/js/appLogin/login.js"></script>
+		<script src="assets/js/appLogin/valida_login.js"></script>
 		<!--end::Page Scripts-->
 	</body>
 	<!--end::Body-->

@@ -5,10 +5,10 @@
 	require_once("Classes/Principal.php");
 	require_once("Classes/Ponto.php");
 
-    /*if ( $_SESSION['autenticado'] !=='validado') {
+    if ( $_SESSION['autenticado'] !=='validado') {
 		header("location: index.php");
 		exit();
-	}*/
+	}
 
     $ponto = new Ponto(); 
     $Principal = new Principal();
@@ -21,7 +21,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Universo</title>
+    <title>Espelho Meu | Dashboard</title>
     <link rel="canonical" href="https://keenthemes.com/metronic" />
     <!--begin::Fonts-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
@@ -77,6 +77,7 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
+                                        <th>Tipo</th>
                                         <th>Local</th>
                                         <th>Lat/long</th>
                                         <th>Tipo</th>
@@ -104,6 +105,7 @@
                                             
                                             echo "<tr>
                                                     <td>".$dados['id_ponto']."</td>
+                                                    <td>".$dados['id_tipo']."</td>
                                                     <td>".$dados['ds_localidade']."</td>
                                                     <td>".$dados['nu_localidade']."</td>
                                                     <td>".$dados['ds_tipo']."</td>

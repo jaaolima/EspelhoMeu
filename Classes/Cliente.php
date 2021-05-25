@@ -41,13 +41,13 @@
     			print "ERRO:".$e->getMessage();		
 			} 
         }
-		public function listarOptionsCliente()
+		public function listarOptionsEmpresa()
 		{
 			try{
 				$con = Conecta::criarConexao();
 
 				
-				$select = "SELECT id_cliente, ds_nome
+				$select = "SELECT id_cliente, ds_empresa
 							FROM tb_cliente"; 
 				
 				$stmt = $con->prepare($select);
@@ -57,7 +57,7 @@
 
 				while($dados = $stmt->fetch())
 				{
-					$options.= "<option value='".$dados['id_cliente']."'>".$dados['ds_nome']."</option>";
+					$options.= "<option value='".$dados['id_cliente']."'>".$dados['ds_empresa']."</option>";
 				}
 				return $options;
 

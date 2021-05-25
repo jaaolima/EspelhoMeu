@@ -2,27 +2,31 @@
 $(document).ready(function() {
 	    
 	$("#adicionar").on("click", function(e){ 
-		$.ajax({
-			url: 'appPonto/gravar_alugado.php'
-			, data: $("#form_bisemana").serialize()
-			, type: 'post'
-			, success: function(html) {
-				swal.fire({
-					position: 'top-right',
-					type: 'success',
-					title: html,
-					showConfirmButton: true
-				});
-				$('#modal').modal('hide');
-
-							
-			}
-			, error: function (data) {
-				swal.fire("Erro", data.responseText, "error");
-			}
-		});		
+		if(validarAlugado())
+		{
+			$.ajax({
+				url: 'appPonto/gravar_alugado.php'
+				, data: $("#form_bisemana").serialize()
+				, type: 'post'
+				, success: function(html) {
+					swal.fire({
+						position: 'top-right',
+						type: 'success',
+						title: html,
+						showConfirmButton: true
+					});
+					$('#modal').modal('hide');
 	
-	});
+								
+				}
+				, error: function (data) {
+					swal.fire("Erro", data.responseText, "error");
+				}
+			});		
+			
+		}
+	});	
+		
 	
 });
 $(document).ready(function() {
@@ -98,6 +102,50 @@ function validarPonto()
 		$("#id_tipo").removeClass("is-invalid");	
 		$("#id_tipo").addClass("is-valid");
 	}
+
+	return true;
+}
+
+function validarAlugado()
+{
+	if($("#id_cliente option:selected").val() == "")
+	{
+		$("#id_cliente").focus();
+		swal.fire("Erro", "Selecione um cliente", "error");
+		$("#id_cliente").addClass("is-invalid");
+		return false;	
+	}
+	else
+	{
+		$("#id_cliente").removeClass("is-invalid");	
+		$("#id_cliente").addClass("is-valid");
+	}
+	if($("#nu_valor").val() == "")
+	{
+		$("#nu_valor").focus();
+		swal.fire("Erro", "Preencha o valor", "error");
+		$("#nu_valor").addClass("is-invalid");
+		return false;	
+	}
+	else
+	{
+		$("#nu_valor").removeClass("is-invalid");	
+		$("#nu_valor").addClass("is-valid");
+	}
+
+	if($("#bisemana option:checked").val() == "")
+	{
+		$("#bisemana").focus();
+		swal.fire("Erro", "Adicione uma bisemana", "error");
+		$("#bisemana").addClass("is-invalid");
+		return false;	
+	}
+	else
+	{
+		$("#bisemana").removeClass("is-invalid");	
+		$("#bisemana").addClass("is-valid");
+	}
+
 
 	return true;
 }

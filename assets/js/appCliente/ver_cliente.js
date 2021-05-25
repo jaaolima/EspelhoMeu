@@ -169,10 +169,11 @@ var DatatablesBasicBasic = function() {
 					targets: -1,
 					title: 'Ações',
 					orderable: false,
+					
 					render: function(data, type, full, meta) {
 						return `
                         
-                         <a href="appPonto/ver_ponto.php?id_ponto=`+full[0]+`"" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Visualizar Cadastro">
+                         <a href="appPonto/ver_ponto.php?id_ponto=`+full[0]+`&id_tipo=`+full[1]+`"" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Visualizar Cadastro">
                           <i class="la la-edit"></i>
                         </a>
                         `;
@@ -180,6 +181,10 @@ var DatatablesBasicBasic = function() {
 				},
 				{
 					targets: 0,
+					visible: false
+				},
+				{
+					targets: 1,
 					visible: false
 				},
 				

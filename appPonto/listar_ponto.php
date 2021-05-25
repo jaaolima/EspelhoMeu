@@ -26,21 +26,33 @@
                     </div>
                     <div class="modal-body">
                         <form id="form_ponto">
-                            <div class="form-group col-4">
+                            <div class="form-group col-6">
                                 <label>Localidade: <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="ds_localidade" name="ds_localidade" />
                             </div>
-                            <div class="form-group col-4">
+                            <div class="form-group col-6">
+                                <label>Sentido: <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="ds_sentido" name="ds_sentido" />
+                            </div>
+                            <div class="form-group col-6">
                                 <label>Latitude/Longitude: <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="nu_localidade" name="nu_localidade" />
                             </div>
-                            <div class="form-group col-4">
+                            <div class="form-group col-6">
                                 <label>Tipo: <span class="text-danger">*</span></label>
                                 <select class="form-control" name="id_tipo" id="id_tipo">
                                     <option  value="">Selecione...</option>
                                     <option  value="1" >Outdoor</option>
                                     <option  value="2">Front-light</option>
                                 </select>
+                            </div>
+                            <div class="form-group col-6">
+                                <label>Valor: <span class="text-danger">*</span></label>
+                                <input type="number" class="form-control" id="nu_valor_ponto" name="nu_valor_ponto" />
+                            </div>
+                            <div class="form-group col-6">
+                                <label>Foto:<span class="text-danger">*</span></label>
+                                <input type="file" class="form-control" name="ds_foto" id="ds_foto">
                             </div>
                         </form>
                     </div>
@@ -54,9 +66,20 @@
         <div class="col-6 ">
             <div class="card card-custom bgi-no-repeat bgi-size-cover gutter-b bg-white"  >
                 <div class="card-body">
-                    <h3 class="font-weight-bolder">
-                        Outdoor
-                    </h3>
+                    <div class="row mb-10">
+                        <div class="col-6">
+                            <h3 class="font-weight-bolder col-6">
+                                Outdoor
+                            </h3>
+                        </div>
+                        <div class="text-right col-6 dropdown">
+                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >Listar</button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item"  href="appPonto/outdoor_disponiveis.php" target="_blank">Disponíveis</a>
+                                <a class="dropdown-item"  href="appPonto/outdoor_todos.php" target="_blank">Todos</a>
+                            </div>
+                        </div>
+                    </div>
                     <table class="table table-hover" id="table_outdoor">
                         <thead>
                             <tr>
@@ -104,9 +127,20 @@
         <div class="col-6 ">
             <div class="card card-custom bgi-no-repeat bgi-size-cover gutter-b bg-white"  >
                 <div class="card-body">
-                    <h3 class="font-weight-bolder">
-                        Front-Light
-                    </h3>
+                    <div class="row mb-10">
+                        <div class="col-6">
+                            <h3 class="font-weight-bolder col-6">
+                                Front-light
+                            </h3>
+                        </div>
+                        <div class="text-right col-6 dropdown">
+                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdown-front" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >Listar</button>
+                            <div class="dropdown-menu" aria-labelledby="dropdown-front">
+                                <a class="dropdown-item"  href="appPonto/front_disponiveis.php" target="_blank">Disponíveis</a>
+                                <a class="dropdown-item" href="appPonto/front_todos.php" target="_blank">Todos</a>
+                            </div>
+                        </div>
+                    </div>
                     <table class="table table-hover" id="table_front">
                         <thead>
                             <tr>

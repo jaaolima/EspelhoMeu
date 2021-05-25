@@ -20,7 +20,8 @@
 				$select = "SELECT id_bisemana, ds_bisemana, dt_final, dt_inicial
 							FROM tb_bisemana
 							where dt_final > :hoje
-							and id_bisemana not in (select id_bisemana from tb_alugado where id_ponto=:id_ponto)";
+							and dt_inicial not in (select dt_inicial from tb_alugado where id_ponto=:id_ponto)
+							and dt_final not in (select dt_final from tb_alugado where id_ponto=:id_ponto)";
 				
 				$stmt = $con->prepare($select); 
 				$params = array(':hoje' => $hoje,

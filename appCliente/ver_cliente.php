@@ -13,6 +13,7 @@
 
     $dados = $cliente->BuscarDadosCliente($id_cliente);
     $retorno = $ponto->listarPontoCliente($id_cliente);
+    $retornoTotal = $ponto->listarTotalCliente($id_cliente);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -142,8 +143,10 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
+                                <th>Tipo</th>
                                 <th>Local</th>
                                 <th>Tipo</th>
+                                <th>Valor</th>
                                 <th>Data Inicial</th>
                                 <th>Data Final</th>
                                 <th>Lat/long</th>
@@ -153,26 +156,41 @@
                         </thead>
                         <tbody>
                             <?php
-                                while ($dados = $retorno->fetch())
+                                while ($dadosPonto = $retorno->fetch())
                                 {
-                                    $dt_inicial = date('d/m/Y', strtotime($dados["dt_inicial"]));
-                                    $dt_final = date('d/m/Y', strtotime($dados["dt_final"]));
+                                    $dt_inicial = date('d/m/Y', strtotime($dadosPonto["dt_inicial"]));
+                                    $dt_final = date('d/m/Y', strtotime($dadosPonto["dt_final"]));
 
                                     echo "<tr>
-                                            <td>".$dados['id_ponto']."</td>
-                                            <td>".$dados['ds_localidade']."</td>
-                                            <td>".$dados['ds_tipo']."</td>
+                                            <td>".$dadosPonto['id_ponto']."</td>
+                                            <td>".$dadosPonto['id_tipo']."</td>
+                                            <td>".$dadosPonto['ds_localidade']."</td>
+                                            <td>".$dadosPonto['ds_tipo']."</td>
+                                            <td>".$dadosPonto['nu_valor']."</td>
                                             <td>".$dt_inicial."</td>
                                             <td>".$dt_final."</td>
-                                            <td>".$dados['nu_localidade']."</td>
+                                            <td>".$dadosPonto['nu_localidade']."</td>
                                             <td nowrap></td>
                                         </tr>";
+                                    
                                 }
                             ?>
                             
                         </tbody>
-
+                       
                     </table>
+                    <?php 
+                        $valor = 0;
+                        while($dadosTotal = $retornoTotal->fetch())
+                        {
+                            $valor += $dadosTotal["nu_valor"];
+                        } 
+                    
+                    ?>
+                    <div class="mt-8">
+                        <h3>Valor total: </h3>
+                        <h3 style="color: green;"><?php echo $valor; ?></h3>
+                    </div>
                 </div>
             </div>
             

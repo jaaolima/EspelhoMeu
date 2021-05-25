@@ -26,7 +26,7 @@
   --info: #6993FF;
   --warning: #FFA800;
   --danger: #F64E60;
-  --light: #F3F6F9;
+  --light: #46454565;
   --dark: #181C32;
   --white: #ffffff;
   --breakpoint-xs: 0;
@@ -57717,8 +57717,8 @@ code {
     font-weight: 500; }
   .fc-unthemed .fc-event .fc-title,
   .fc-unthemed .fc-event-dot .fc-title {
-    font-size: 0.9rem;
-    font-weight: 400; }
+    font-size: 14px;
+    font-weight: 500; }
 
 .fc-unthemed .fc-description {
   font-size: 0.9rem;
@@ -57868,7 +57868,7 @@ code {
     color: #3F4254; }
   .fc-unthemed .fc-event .fc-title,
   .fc-unthemed .fc-event-dot .fc-title {
-    color: #3F4254; }
+    color: #000000; }
 
 .fc-unthemed .fc-description {
   color: #B5B5C3; }
