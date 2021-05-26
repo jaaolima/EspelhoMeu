@@ -80,7 +80,7 @@ if ( $_SESSION['autenticado'] ==='validado') {
         <script src="assets/plugins/global/plugins.bundle.js"></script>
         <script src="assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
         <script src="assets/js/scripts.bundle.js"></script>
-        <script src="assets/js/scripts.bundle2.min.js"></script>
+        <script src="assets/js/scripts.bundle2.min.js"></script> 
         <!--begin::Page Vendors(used by this page)-->
         <script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
         <!--end::Page Vendors-->
